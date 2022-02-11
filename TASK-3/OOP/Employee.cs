@@ -1,6 +1,6 @@
 using Bogus;
 
-namespace Humanity;
+namespace OOP;
 
 public class Employee : IDisplay
 {
@@ -90,7 +90,7 @@ public class Employee : IDisplay
                           $" and my salary is {Salary}. My ID number is {id}");
     }
 
-    public void GenerateEmployees()
+    public static void Generate()
     {
         var employeesList = new List<Employee>(); /*have to create an interface for both classes */
         var count = new Random();
@@ -109,4 +109,6 @@ public class Employee : IDisplay
                 fake.Address.StreetAddress())));
         }
     }
+
+   
 }
