@@ -2,14 +2,14 @@ namespace Humanity;
 
 public class Candidate
 {
-    private Guid id = new(); /* GUID */
-    private string lastname;
-    private string name;
-    private string desiredJobPosition;
-    private string desiredJobDescription;
-    private double desiredSalary;
+    public Guid id = new(); /* GUID */
+    public string lastname { get; }
+    public string name { get; } 
+    public string desiredJobPosition { get; }
+    public string desiredJobDescription { get; }
+    public int desiredSalary { get; }
 
-    public Candidate(string lastname, string name, string desiredJobPosition, string desiredJobDescription, double desiredSalary)
+    public Candidate(Guid id, string lastname, string name, string desiredJobPosition, string desiredJobDescription, int desiredSalary)
     {
         this.lastname = lastname;
         this.name = name;
@@ -20,7 +20,7 @@ public class Candidate
 
     public void Display()
     {
-        Console.WriteLine($"I am {lastname + " " + name}. I want to be a {desiredJobPosition}" +
-                          $" {desiredJobDescription}, with {desiredSalary} salary. My ID number is {id}");
+        Console.WriteLine($"I am {lastname} {name}. I want to be a {desiredJobPosition}" +
+                          $" {desiredJobDescription}, with a salary of {desiredSalary} . My ID number is {id}");
     }
 }
