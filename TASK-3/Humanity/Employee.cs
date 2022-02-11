@@ -1,19 +1,22 @@
+using Bogus;
+
 namespace Humanity;
 
 public class Employee : IDisplay
 {
-    private Guid _id = new();
-    private string _lastname;
-    private string _name;
-    private string _jobTitle;
-    private double _salary;
-    private string _companyName;
-    private string _companyCountry;
-    private string _companyCity;
-    private string _companyStreet;
+    public Guid id = Guid.NewGuid();
+    public string _lastname;
+    public string _name;
+    public string _jobTitle;
+    public double _salary;
+    public string _companyName;
+    public string _companyCountry;
+    public string _companyCity;
+    public string _companyStreet;
 
 
-    public Employee(string lastname, string name, string jobTitle, double salary, string companyName, string companyCountry, string companyCity, string companyStreet)
+    public Employee(Guid id, string lastname, string name, string jobTitle,
+        double salary, string companyName, string companyCountry, string companyCity, string companyStreet)
     {
         
         this.Lastname = lastname;
@@ -74,11 +77,36 @@ public class Employee : IDisplay
         set => _companyStreet = value;
     }
 
+    public Guid Id
+    {
+        get => id;
+        set => id = value;
+    }
+
     public void Display()
     {
         Console.WriteLine($"I am {Name + " " + Lastname}, {JobTitle}, in {CompanyName}, " + 
                           $"{CompanyCountry}, {CompanyCity} town, {CompanyStreet} street," +
-                          $" and my salary is {Salary}. My ID number is {_id}");
+                          $" and my salary is {Salary}. My ID number is {id}");
     }
 
+    public void GenerateEmployees()
+    {
+        var employeesList = new List<Employee>(); /*have to create an interface for both classes */
+        var count = new Random();
+        var randomSalary = new Random();
+        for (var i = 0; i < count.Next(2,5); i++)
+        {
+            employeesList.Add(new Faker<Employee>().CustomInstantiator(fake => new Employee(
+                new Guid(),
+                fake.Name.LastName(),
+                fake.Name.FirstName(),
+                fake.Name.JobTitle(),
+                randomSalary.Next(500, 2500),
+                fake.Company.CompanyName(),
+                fake.Address.Country(),
+                fake.Address.City(),
+                fake.Address.StreetAddress())));
+        }
+    }
 }
