@@ -2,7 +2,7 @@ namespace Humanity;
 
 public class Candidate
 {
-    public Guid id = new(); /* GUID */
+    public Guid id = Guid.NewGuid(); /* GUID */
     public string lastname { get; }
     public string name { get; } 
     public string desiredJobPosition { get; }
@@ -20,7 +20,7 @@ public class Candidate
 
     public void Display()
     {
-        Console.WriteLine($"I am {lastname} {name}. I want to be a {desiredJobPosition}" +
+        Console.WriteLine($"I am {lastname} {name}. I want to be a {desiredJobPosition} at " +
                           $" {desiredJobDescription}, with a salary of {desiredSalary} . My ID number is {id}");
     }
 }
