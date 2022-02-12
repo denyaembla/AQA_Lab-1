@@ -2,13 +2,13 @@ using Bogus;
 
 namespace OOP;
 
-public class CandidateGenerator
+public class CandidateGenerator : Candidate
 {
-    public Object Candidate;
-
-    public CandidateGenerator(object candidate)
+    
+    public CandidateGenerator(Guid id, string lastname, string name, string desiredJobPosition,
+                                string desiredJobDescription, int desiredSalary)
+            : base(id, lastname, name, desiredJobPosition, desiredJobDescription, desiredSalary)
     {
-        Candidate = this.Candidate;
     }
 
     public static void GenerateAndSortCandidates()
@@ -41,4 +41,8 @@ public class CandidateGenerator
 
         
     }
+
+    
 }
+
+
