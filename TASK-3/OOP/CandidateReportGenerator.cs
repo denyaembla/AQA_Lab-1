@@ -18,12 +18,12 @@ public abstract class CandidateReportGenerator : CandidateGenerator
     {
         
         {
-            Container.Sort((c1, c2) =>
+            candContainer.Sort((c1, c2) =>
             {
                 int result = c1.desiredSalary.CompareTo(c1.desiredSalary);
                 return result == 0 ? c1.desiredJobPosition.CompareTo(c2.desiredJobPosition) : result;
             });
-            foreach (var candidate in Container)
+            foreach (var candidate in candContainer)
             {
                 candidate.Display();
                 

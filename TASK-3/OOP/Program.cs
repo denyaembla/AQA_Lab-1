@@ -10,6 +10,7 @@ class Program
         CandidateGenerator.GenerateCandidates();
         Console.WriteLine(" /n ");
         CandidateReportGenerator.SortAndDisplayCandidates();
-
+        Console.WriteLine(" /n ");
+        EmployeeGenerator.GenerateEmployee();
     }
 }

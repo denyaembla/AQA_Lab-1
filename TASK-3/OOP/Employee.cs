@@ -4,95 +4,39 @@ namespace OOP;
 
 public class Employee : IDisplay
 {
-    public Guid id = Guid.NewGuid();
-    public string _lastname;
-    public string _name;
-    public string _jobTitle;
-    public double _salary;
-    public string _companyName;
-    public string _companyCountry;
-    public string _companyCity;
-    public string _companyStreet;
-
-
-    public Employee(Guid id, string lastname, string name, string jobTitle,
-        double salary, string companyName, string companyCountry, string companyCity, string companyStreet)
+    public Guid ID = Guid.NewGuid();
+    public string lastname { get; }
+    public string name { get; }
+    public string jobTitle { get; }
+    public string companyName { get; }
+    public string companyCountry { get; }
+    public string companyCity { get; }
+    public string companyStreet { get; }
+    public int salary { get; }
+    public Employee(Guid id, string lastname, string name, string jobTitle, string companyName,
+                    string companyCountry, string companyCity, string companyStreet, int salary)
     {
-        
-        this.Lastname = lastname;
-        this.Name = name;
-        this.JobTitle = jobTitle;
-        this.Salary = salary;
-        this.CompanyName = companyName;
-        this.CompanyCountry = companyCountry;
-        this.CompanyCity = companyCity;
-        this.CompanyStreet = companyStreet;
-    }
-
-    public string Lastname
-    {
-        get => _lastname;
-        set => _lastname = value;
-    }
-
-    public string Name
-    {
-        get => _name;
-        set => _name = value;
-    }
-
-    public string JobTitle
-    {
-        get => _jobTitle;
-        set => _jobTitle = value;
-    }
-
-    public double Salary
-    {
-        get => _salary;
-        set => _salary = value;
-    }
-
-    public string CompanyName
-    {
-        get => _companyName;
-        set => _companyName = value;
-    }
-
-    public string CompanyCountry
-    {
-        get => _companyCountry;
-        set => _companyCountry = value;
-    }
-
-    public string CompanyCity
-    {
-        get => _companyCity;
-        set => _companyCity = value;
-    }
-
-    public string CompanyStreet
-    {
-        get => _companyStreet;
-        set => _companyStreet = value;
-    }
-
-    public Guid Id
-    {
-        get => id;
-        set => id = value;
+        this.ID = id;
+        this.lastname = lastname;
+        this.name = name;
+        this.jobTitle = jobTitle;
+        this.companyName = companyName;
+        this.companyCountry = companyCountry;
+        this.companyCity = companyCity;
+        this.companyStreet = companyStreet;
+        this.salary = salary;
     }
 
     public void Display()
     {
-        Console.WriteLine($"I am {Name + " " + Lastname}, {JobTitle}, in {CompanyName}, " + 
-                          $"{CompanyCountry}, {CompanyCity} town, {CompanyStreet} street," +
-                          $" and my salary is {Salary}. My ID number is {id}");
+        Console.WriteLine($"I am {name + " " + lastname}, {jobTitle}, in {companyName}, " + 
+                          $"{companyCountry}, {companyCity} town, {companyStreet} street," +
+                          $" and my salary is {salary}. My ID number is {ID}");
     }
 
-    public static void Generate()
+ /*   public static void Generate()
     {
-        var employeesList = new List<Employee>(); /*have to create an interface for both classes */
+        var employeesList = new List<Employee>(); /*have to create an interface for both classes 
         var count = new Random();
         var randomSalary = new Random();
         for (var i = 0; i < count.Next(2,5); i++)
@@ -107,8 +51,5 @@ public class Employee : IDisplay
                 fake.Address.Country(),
                 fake.Address.City(),
                 fake.Address.StreetAddress())));
-        }
+        }        */
     }
-
-   
-}

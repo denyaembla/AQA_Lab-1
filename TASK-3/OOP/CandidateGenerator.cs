@@ -11,15 +11,15 @@ public class CandidateGenerator : Candidate
         
     }
 
-    public static List<Candidate> Container;
+    public static List<Candidate> candContainer;
     public static void GenerateCandidates()
     {
-        Container = new List<Candidate>(); /*have to create an interface for both classes */
+        candContainer = new List<Candidate>(); /*have to create an interface for both classes */
         var count = new Random();
         var randomSalary = new Random();
         for (var i = 0; i < count.Next(minValue: 2, maxValue: 10); i++)
         {
-            Container.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
+            candContainer.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
                 new Guid(),
                 fake.Name.FirstName(),
                 fake.Name.LastName(),
@@ -29,17 +29,11 @@ public class CandidateGenerator : Candidate
         }
         
         {
-            /* candidatesList.Sort((c1, c2) =>
-            {
-                int result = c1.desiredSalary.CompareTo(c1.desiredSalary);
-                return result == 0 ? c1.desiredJobPosition.CompareTo(c2.desiredJobPosition) : result;
-            }); */
-            foreach (var candidate in Container)
+            
+            foreach (var candidate in candContainer)
             {
                 candidate.Display();
-               /* Console.WriteLine(candidatesList.GetType());
-                Console.WriteLine(candidate.GetType()); */
-
+               
             }
         }
 
