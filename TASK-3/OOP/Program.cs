@@ -1,13 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
 namespace OOP;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
-using Bogus;
-using OOP;
 
+class Program
+{
+    
+    static void Main(string[] args)
+    {
+        
+        CandidateGenerator.GenerateCandidates();
+        Console.WriteLine(" /n ");
+        CandidateReportGenerator.SortAndDisplayCandidates();
 
-
-
-
-
-
+    }
+}

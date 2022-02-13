@@ -1,4 +1,3 @@
-using System.Runtime.Serialization;
 using Bogus;
 namespace OOP;
 
@@ -12,15 +11,15 @@ public class CandidateGenerator : Candidate
         
     }
 
-    public List<Candidate>? Cointainer;
-    public void GenerateCandidates()
+    public static List<Candidate> Container;
+    public static void GenerateCandidates()
     {
-        Cointainer = new List<Candidate>(); /*have to create an interface for both classes */
+        Container = new List<Candidate>(); /*have to create an interface for both classes */
         var count = new Random();
         var randomSalary = new Random();
         for (var i = 0; i < count.Next(minValue: 2, maxValue: 10); i++)
         {
-            Cointainer.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
+            Container.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
                 new Guid(),
                 fake.Name.FirstName(),
                 fake.Name.LastName(),
@@ -35,7 +34,7 @@ public class CandidateGenerator : Candidate
                 int result = c1.desiredSalary.CompareTo(c1.desiredSalary);
                 return result == 0 ? c1.desiredJobPosition.CompareTo(c2.desiredJobPosition) : result;
             }); */
-            foreach (var candidate in Cointainer)
+            foreach (var candidate in Container)
             {
                 candidate.Display();
                /* Console.WriteLine(candidatesList.GetType());

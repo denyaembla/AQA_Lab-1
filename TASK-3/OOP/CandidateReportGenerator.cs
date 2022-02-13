@@ -4,7 +4,7 @@ using Bogus;
 
 namespace OOP;
 
-public class CandidateReportGenerator : CandidateGenerator
+public abstract class CandidateReportGenerator : CandidateGenerator
 {
 
     public CandidateReportGenerator(Guid id, string lastname, string name, string desiredJobPosition,
@@ -14,16 +14,16 @@ public class CandidateReportGenerator : CandidateGenerator
     }
 
 
-    public  void SortAndDisplayCandidates()
+    public static void SortAndDisplayCandidates()
     {
         
         {
-            Cointainer.Sort((c1, c2) =>
+            Container.Sort((c1, c2) =>
             {
                 int result = c1.desiredSalary.CompareTo(c1.desiredSalary);
                 return result == 0 ? c1.desiredJobPosition.CompareTo(c2.desiredJobPosition) : result;
             });
-            foreach (var candidate in candidatesList)
+            foreach (var candidate in Container)
             {
                 candidate.Display();
                 
