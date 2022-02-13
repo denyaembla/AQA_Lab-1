@@ -9,17 +9,18 @@ public class CandidateGenerator : Candidate
                                 string desiredJobDescription, int desiredSalary)
             : base(id, lastname, name, desiredJobPosition, desiredJobDescription, desiredSalary)
     {
+        
     }
 
-    public List<Candidate> Cointainer;
+    public List<Candidate>? Cointainer;
     public void GenerateCandidates()
     {
-        var candidatesList = new List<Candidate>(); /*have to create an interface for both classes */
+        Cointainer = new List<Candidate>(); /*have to create an interface for both classes */
         var count = new Random();
         var randomSalary = new Random();
         for (var i = 0; i < count.Next(minValue: 2, maxValue: 10); i++)
         {
-            candidatesList.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
+            Cointainer.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
                 new Guid(),
                 fake.Name.FirstName(),
                 fake.Name.LastName(),
@@ -27,8 +28,7 @@ public class CandidateGenerator : Candidate
                 fake.Name.JobDescriptor(),
                 randomSalary.Next(500, 2500))));
         }
-
-        Cointainer = candidatesList;
+        
         {
             /* candidatesList.Sort((c1, c2) =>
             {
