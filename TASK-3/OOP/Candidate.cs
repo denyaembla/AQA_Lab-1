@@ -11,6 +11,8 @@ public class Candidate : IDisplay
     public string desiredJobDescription { get; }
     public int desiredSalary { get; }
 
+    
+    
     public Candidate(Guid id, string lastname, string name, string desiredJobPosition, string desiredJobDescription,
         int desiredSalary)
     {
@@ -26,6 +28,7 @@ public class Candidate : IDisplay
         Console.WriteLine($"I am {lastname} {name}. I want to be a {desiredJobPosition} at " +
                           $" {desiredJobDescription}, with a salary of {desiredSalary} . My ID number is {id}");
     }
-
+    
+    public List<Candidate> candidatesList = new();
     
 }
