@@ -15,10 +15,10 @@ public class EmployeeReportGenerator : EmployeeGenerator
     {
         emplContainer.Sort((c1, c2) =>
             {
-                int result = c1.desiredSalary.CompareTo(c1.desiredSalary);
-                return result == 0 ? c1.desiredJobPosition.CompareTo(c2.desiredJobPosition) : result;
+                int result = c1.companyName.CompareTo(c1.companyName);
+                return result == 0 ? c2.salary.CompareTo(c1.salary) : result;
             });
-            foreach (var candidate in candContainer)
+            foreach (var candidate in emplContainer)
             {
                 candidate.Display();
                 

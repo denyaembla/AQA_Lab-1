@@ -7,10 +7,9 @@ class Program
     static void Main(string[] args)
     {
         
-        CandidateGenerator.GenerateCandidates();
-        Console.WriteLine(" /n ");
-        CandidateReportGenerator.SortAndDisplayCandidates();
-        Console.WriteLine(" /n ");
+        
         EmployeeGenerator.GenerateEmployee();
+        Console.Write(" \n ");
+        EmployeeReportGenerator.SortAndDisplayEmployee();
     }
 }
