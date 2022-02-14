@@ -1,6 +1,6 @@
 namespace OOP;
 
-public class UserFactory
+public class UserFactory 
 {
     public static void GenerateUser()
     {
