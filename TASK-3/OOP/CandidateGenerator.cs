@@ -3,8 +3,7 @@ namespace OOP;
 
 public class CandidateGenerator : Candidate
 {
-    
-    public CandidateGenerator(Guid id, string lastname, string name, string desiredJobPosition,
+    protected CandidateGenerator(Guid id, string lastname, string name, string desiredJobPosition,
                                 string desiredJobDescription, int desiredSalary)
             : base(id, lastname, name, desiredJobPosition, desiredJobDescription, desiredSalary)
     {

@@ -1,3 +1,5 @@
+using System;
+
 namespace OOP;
 
 public class UserFactory 
@@ -6,9 +8,9 @@ public class UserFactory
     {
         Console.WriteLine($"Enter 1, if you want to add another Employee.\n" +
                           $"Enter 2, if you want to add another Candidate.");
-        var _userType = Console.Read();
-        
-        switch (_userType)
+        var userType = Convert.ToInt32(Console.ReadLine());
+
+        switch (userType)
         {
             case 1:
                 EmployeeGenerator.GenerateOneEmployee();

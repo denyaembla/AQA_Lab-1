@@ -6,8 +6,7 @@ namespace OOP;
 
 public abstract class CandidateReportGenerator : CandidateGenerator, IReportGenerator
 {
-
-    public CandidateReportGenerator(Guid id, string lastname, string name, string desiredJobPosition,
+    protected CandidateReportGenerator(Guid id, string lastname, string name, string desiredJobPosition,
         string desiredJobDescription, int desiredSalary) : base(id, lastname, name, desiredJobPosition,
         desiredJobDescription, desiredSalary)
     {

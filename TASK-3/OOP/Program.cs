@@ -7,9 +7,9 @@ class Program
     static void Main(string[] args)
     {
         
-       
         UserFactory.GenerateUser(); /*Doesnt work, probably inheritance issues  */
-        
+        CandidateGenerator.GenerateOneCandidate();
+        CandidateGenerator.GenerateOneCandidate();
         CandidateGenerator.GenerateOneCandidate();
         CandidateReportGenerator.SortAndDisplayCandidates();
         
