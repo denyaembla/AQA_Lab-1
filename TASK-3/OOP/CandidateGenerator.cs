@@ -11,33 +11,27 @@ public class CandidateGenerator : Candidate
         
     }
 
-    public static List<Candidate> candContainer;
-    public static void GenerateCandidates()
-    {
-        candContainer = new List<Candidate>(); /*have to create an interface for both classes */
-        var count = new Random();
-        var randomSalary = new Random();
-        for (var i = 0; i < count.Next(minValue: 2, maxValue: 10); i++)
-        {
-            candContainer.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
-                new Guid(),
-                fake.Name.FirstName(),
-                fake.Name.LastName(),
-                fake.Name.JobTitle(),
-                fake.Name.JobDescriptor(),
-                randomSalary.Next(500, 2500))));
-        }
-        
-        {
-            
-            foreach (var candidate in candContainer)
-            {
-                candidate.Display();
-               
-            }
-        }
+    protected static List<Candidate> candContainer = new();
+    public static Random count = new();
+    public static Random randomSalary = new();
 
+    public static void GenerateOneCandidate()
+    {
+        candContainer.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
+            new Guid(),
+            fake.Name.FirstName(),
+            fake.Name.LastName(),
+            fake.Name.JobTitle(),
+            fake.Name.JobDescriptor(),
+            randomSalary.Next(500, 2500))));
+    }
+    public static void GenerateAFewCandidates()
+    {
         
+        for (var i = 0; i < count.Next(minValue: 2, maxValue: 2); i++)
+        {
+            GenerateOneCandidate();
+        }
     }
 
     

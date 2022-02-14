@@ -12,36 +12,30 @@ public class EmployeeGenerator : Employee
     {
         
     }
-    
+    public static List<Employee> emplContainer = new();
+    public static Random count = new();
+    public static Random randomSalary = new();
 
-    public static List<Employee> emplContainer;
-    public static void GenerateEmployee()
+    public static void GenerateOneEmployee()
     {
-        emplContainer = new List<Employee>(); /*have to create an interface for both classes */
-        var count = new Random();
-        var randomSalary = new Random();
-        for (var i = 0; i < count.Next(minValue: 2, maxValue: 10); i++)
+        emplContainer.Add(new Faker<Employee>().CustomInstantiator(fake => new Employee(
+            new Guid(),
+            fake.Name.LastName(),
+            fake.Name.FindName(),
+            fake.Name.JobTitle(),
+            fake.Company.CompanyName(),
+            fake.Address.Country(),
+            fake.Address.City(),
+            fake.Address.StreetAddress(),
+            randomSalary.Next(500, 2500))));
+    }
+    public static void GenerateAFewEmployee()
+    {
+        for (var i = 0; i < count.Next(minValue: 2, maxValue: 6); i++)
         {
-            emplContainer.Add(new Faker<Employee>().CustomInstantiator(fake => new Employee(
-                new Guid(),
-                fake.Name.LastName(),
-                fake.Name.FindName(),
-                fake.Name.JobTitle(),
-                fake.Company.CompanyName(),
-                fake.Address.Country(),
-                fake.Address.City(),
-                fake.Address.StreetAddress(),
-                randomSalary.Next(500, 2500))));
+            GenerateOneEmployee();
         }
         
-        {
-            
-            foreach (var employee in emplContainer)
-            {
-                employee.Display();
-               
-            }
-        }
 
         
     }
