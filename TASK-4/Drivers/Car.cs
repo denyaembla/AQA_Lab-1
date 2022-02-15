@@ -2,13 +2,16 @@ namespace Drivers;
 
 public class Car
 {
-    enum CarType
-    {
-        SportCar,
-        Truck,
-        Minivan
-    }
-    private Vehicle _vehicle;
-    private CarStats _stats;
-    
+   public Car()
+   {
+      this._engine = Engine.CreateEngine();
+      this._vehicle = Vehicle.GenerateVehicle();
+   }
+
+   public Engine _engine;
+   public Vehicle _vehicle;
+
+   
 }
+
+   
