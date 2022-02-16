@@ -1,16 +1,25 @@
 namespace Drivers;
+using Bogus;
 
 public class Car
 {
-   public Car()
+   public Vehicle _vehicle;
+   public string _CarName;
+   public Car(Vehicle vehicle, string carName)
    {
-      this._engine = Engine.CreateEngine();
-      this._vehicle = Vehicle.GenerateVehicle();
+      _vehicle = vehicle;
+      _CarName = carName;
    }
 
-   public Engine _engine;
-   public Vehicle _vehicle;
-
+   
+   public static Car CreateCar()
+   {
+      Car car = new Faker<Car>()
+         .CustomInstantiator(faker => new Car(
+            Vehicle.CreateVehicle(),
+            faker.Name.FirstName()));
+            return car;
+   }
    
 }
 

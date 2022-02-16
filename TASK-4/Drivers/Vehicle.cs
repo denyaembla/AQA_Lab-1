@@ -1,3 +1,4 @@
+using System.Collections;
 using Bogus;
 
 namespace Drivers;
@@ -16,16 +17,14 @@ public class Vehicle
     public int Year;
     public string Owner;
     public Engine _engine;
-
-    public static Vehicle GenerateVehicle()
-{
-    var vehicle = new Faker<Vehicle>()
-        .CustomInstantiator(faker => new Vehicle(
-            faker.Database.Engine(),
-            faker.Random.Int(min: 1960, max: 2022),
-            faker.Name.FullName(),
-            Engine.CreateEngine()));
-    return vehicle;
-}
-
+    public static Vehicle CreateVehicle()
+    {
+        var vehicle = new Faker<Vehicle>()
+            .CustomInstantiator(faker => new Vehicle(
+                faker.Name.FirstName(),
+                faker.Random.Int(min: 1960, max: 2022),
+                faker.Name.FullName(),
+                Engine.CreateEngine()));
+        return vehicle;
+    }   
 }

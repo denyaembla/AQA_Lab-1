@@ -7,17 +7,14 @@ public class Engine
 {
     
 
-    private int Capacity;
-    private int Power;
-
-    public enum FuelType
-    {
-        Diesel,
-        Gasoline
-    };
- 
-    private int MaxSpeed;
-    
+    public int Capacity;
+    public int Power;
+    public int MaxSpeed;
+ public enum FuelType
+ {
+     Diesel,
+     Gasoline
+ };
     public Engine(int capacity, int power, Enum FuelType, int maxSpeed)
     {
         Capacity = capacity;
@@ -27,17 +24,16 @@ public class Engine
     }
 
     
-   
-
     public static Engine CreateEngine()
     {
-        
-               Engine engine =  new Faker<Engine>()
+        Engine engine =  new Faker<Engine>()
             .CustomInstantiator(faker => new Engine(
                 faker.Random.Int(min:50, max:250),
                 faker.Random.Int(min:70, max:160),
-                faker.PickRandom<Enum>(FuelType.Diesel, FuelType.Gasoline),
+                faker.PickRandom<Enum>(Engine.FuelType.Diesel, Engine.FuelType.Gasoline),
                 faker.Random.Int(100, 220)));
-               return engine;
+        return engine;
     }
+
+    
 }
