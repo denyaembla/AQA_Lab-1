@@ -1,7 +1,5 @@
 ﻿void ChatBotImitation()
 {
-    
-    
     DateTime dateNow;
     dateNow = DateTime.Now;
 
@@ -40,4 +38,3 @@
     
     ChatBotImitation();
 
-/* string.IsNullOrEmpty(name) */
