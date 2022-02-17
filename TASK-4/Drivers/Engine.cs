@@ -9,13 +9,13 @@ public class Engine
 
     public int Capacity;
     public int Power;
-    public int MaxSpeed;
+    public double MaxSpeed;
  public enum FuelType
  {
      Diesel,
      Gasoline
  };
-    public Engine(int capacity, int power, Enum FuelType, int maxSpeed)
+    public Engine(int capacity, int power, Enum FuelType, double maxSpeed)
     {
         Capacity = capacity;
         Power = power;
@@ -31,7 +31,7 @@ public class Engine
                 faker.Random.Int(min:50, max:250),
                 faker.Random.Int(min:70, max:160),
                 faker.PickRandom<Enum>(Engine.FuelType.Diesel, Engine.FuelType.Gasoline),
-                faker.Random.Int(100, 220)));
+                faker.Random.Double(100, 220)));
         return engine;
     }
 

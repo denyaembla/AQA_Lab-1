@@ -4,11 +4,11 @@ using Bogus;
 public class Car
 {
    public Vehicle _vehicle;
-   public string _CarName;
+   public string CarName;
    public Car(Vehicle vehicle, string carName)
    {
       _vehicle = vehicle;
-      _CarName = carName;
+      CarName = carName;
    }
 
    
