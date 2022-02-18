@@ -1,4 +1,3 @@
-using System.Collections;
 using Bogus;
 
 namespace Drivers;
@@ -21,7 +20,7 @@ public class Vehicle
     {
         var vehicle = new Faker<Vehicle>()
             .CustomInstantiator(faker => new Vehicle(
-                faker.Name.FirstName(),
+                faker.PickRandom("Volvo S90", "Mercedes CV-930", "Audi V2020"),
                 faker.Random.Int(min: 1960, max: 2022),
                 faker.Name.FullName(),
                 Engine.CreateEngine()));
