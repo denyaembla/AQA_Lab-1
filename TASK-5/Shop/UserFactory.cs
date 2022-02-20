@@ -16,16 +16,7 @@ public class UserFactory
                 faker.Random.Int(16, 35)));
         return user;
     }
-    
-    public List<User> GenerateAndDisplayFiveUsers()
-    {
-        for (int i = 1; i <= 5; i++)
-        {
-            GenerateUser();
-        }
-        return usersContainer;
-    }
-    
+   
     public static void DisplayUser(User user)
     {
         Console.WriteLine($"{user._name} {user._lastname} with ID-{user.passportID} is {user._age} years old.");

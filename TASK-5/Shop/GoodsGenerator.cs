@@ -2,7 +2,7 @@ using Bogus;
 
 namespace Shop;
 
-public class GoodsGenerator
+public static class GoodsGenerator
 {
     static List<Item> groceryBag = new();
 
