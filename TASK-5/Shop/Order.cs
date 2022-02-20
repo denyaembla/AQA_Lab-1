@@ -2,22 +2,33 @@ namespace Shop;
 
 public class Order
 {
-    public Order(User user = null, List<Item> items = null)
+    public Order(User user, List<Item> groceryBag)
     {
-        User = user;
-        this.items = items;
+        this.user = user;
+        this.groceryBag = groceryBag;
+        orderID++;
     }
 
-    public User User;
-    public List<Item> items;
-
-    public void AlcoholCheck(User user, Item item)
+    private User user;
+    private List<Item> groceryBag;
+    private static int orderID = 1;
+    public User User
     {
-        if (User._age < 18 && (item.category == "Alcohol" || item.itemName == "Beer"))
-        {
-            item.itemName = null;
-            item.category = null;
-            Console.WriteLine("This user is too young to buy alcohol, item was taken away");
-        }
+        get => user;
+        set => user = value ?? throw new ArgumentNullException(nameof(value));
     }
+
+    public List<Item> GroceryBag
+    {
+        get => groceryBag;
+        set => groceryBag = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    public int Id
+    {
+        get => orderID;
+        set => orderID = value;
+    }
+
+    
 }
