@@ -2,7 +2,7 @@ namespace Shop;
 
 public class Order
 {
-    public Order(User user, List<Item> groceryBag)
+    public Order(User user, List<Goods> groceryBag)
     {
         this.user = user;
         this.groceryBag = groceryBag;
@@ -10,7 +10,7 @@ public class Order
     }
 
     private User user;
-    private List<Item> groceryBag;
+    private List<Goods> groceryBag;
     private static int orderID = 1;
     public User User
     {
@@ -18,7 +18,7 @@ public class Order
         set => user = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public List<Item> GroceryBag
+    public List<Goods> GroceryBag
     {
         get => groceryBag;
         set => groceryBag = value ?? throw new ArgumentNullException(nameof(value));
