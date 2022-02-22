@@ -2,9 +2,9 @@ using System.Runtime.InteropServices;
 using Bogus;
 namespace Shop;
 
-public class Goods
+public class Item
 {
-    public Goods(int barcode = default, string? itemName = null, string? category = null, decimal price = default)
+    public Item(int barcode = default, string? itemName = null, string? category = null, decimal price = default)
     {
         this.barcode = barcode;
         this.itemName = itemName;
@@ -14,7 +14,7 @@ public class Goods
 
     public int barcode;
     public string? itemName;
-    public string category;
+    public string? category;
     public decimal price;
 
     

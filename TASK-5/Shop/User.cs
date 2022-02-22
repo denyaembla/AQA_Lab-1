@@ -15,12 +15,12 @@ public class User
     public int passportID; /* WRITE get/set */
     public string? _name;
     public string? _lastname;
-    public  int _age;
-    
-    
-   
+    public int _age;
 
-    
-    
-    
+
+
+
+
+
+
 }

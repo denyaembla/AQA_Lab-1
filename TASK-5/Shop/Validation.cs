@@ -4,22 +4,22 @@ namespace Shop;
 
 public class Validation
 {
-    public static bool SameUserIdChecker(User newUser, List<User> users)
+    public static bool SameIdChecker(int passportID, List<User> users)
     {
         foreach (var u in users)
         {
-            if (u.passportID.Equals(newUser.passportID)) 
+            if (u.passportID.Equals(passportID))
             {
-                Console.Out.WriteLine("You are trying to add new User with same barcode");
+                Console.Out.WriteLine("You are trying to add new User with same passportID");
                 return false;
             }
         }
         return true;
     }
 
-    public static bool AlcoholAgeChecker(User user, Goods goods)
+    public static bool AlcoholAgeChecker(User user, Item item) // Add to ORder;
     {
-        if (!(user._age < 18 && (goods.category.Equals("Alcohol") || goods.itemName.Equals("Beer"))))
+        if (!(user._age < 18 && (item.category.Equals("Alcohol") || item.itemName.Equals("Beer"))))
         {
             {
                 Console.WriteLine($"{user._lastname} {user._name} cannot buy alcohol (age is under 18)");
