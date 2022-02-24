@@ -31,7 +31,7 @@ public class EmployeeGenerator : Employee
     }
     public static void GenerateAFewEmployee()
     {
-        for (var i = 0; i < count.Next(minValue: 2, maxValue: 6); i++)
+        for (var i = 0; i < count.Next(minValue: 1, maxValue: 4); i++)
         {
             GenerateOneEmployee();
         }

@@ -1,18 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-namespace OOP;
+﻿
+using OOP;
 
-class Program
-{
-    
-    static void Main(string[] args)
-    {
-        
-        UserFactory.GenerateUser(); /*Doesnt work, probably inheritance issues  */
-        CandidateGenerator.GenerateOneCandidate();
-        CandidateGenerator.GenerateOneCandidate();
-        CandidateGenerator.GenerateOneCandidate();
-        CandidateReportGenerator.SortAndDisplayCandidates();
-        
-
-    }
-}
+CandidateGenerator.GenerateOneCandidate();
+CandidateGenerator.GenerateAFewCandidates();
+CandidateReportGenerator.SortAndDisplayCandidates();
+Console.WriteLine("\n");
+EmployeeGenerator.GenerateOneEmployee();
+EmployeeGenerator.GenerateAFewEmployee();
+EmployeeReportGenerator.SortAndDisplayEmployee();

@@ -3,7 +3,7 @@ namespace OOP;
 
 public class Candidate : IDisplay
 {
-    public Guid id = Guid.NewGuid(); /* GUID */
+    public Guid id = Guid.NewGuid();
     public string lastname { get; }
     public string name { get; }
     public string desiredJobPosition { get; }

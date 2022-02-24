@@ -27,7 +27,7 @@ public class CandidateGenerator : Candidate
     public static void GenerateAFewCandidates()
     {
         
-        for (var i = 0; i < count.Next(minValue: 2, maxValue: 2); i++)
+        for (var i = 0; i < count.Next(minValue: 2, maxValue: 5); i++)
         {
             GenerateOneCandidate();
         }
