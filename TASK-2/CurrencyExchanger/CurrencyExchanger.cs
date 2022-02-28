@@ -78,9 +78,7 @@ public class CurrencyExchanger
                 };
                 break;
         }
-
-        
-
+      
         Console.Write($"Exchange result is {result*(1-cashFee):F} {currencyInto} ");
     }
 }
