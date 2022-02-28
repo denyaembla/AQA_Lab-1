@@ -4,7 +4,7 @@ using Bogus;
 
 namespace OOP;
 
-public abstract class CandidateReportGenerator : CandidateGenerator, IReportGenerator
+public abstract class CandidateReportGenerator : CandidateGenerator
 {
     protected CandidateReportGenerator(Guid id, string lastname, string name, string desiredJobPosition,
         string desiredJobDescription, int desiredSalary) : base(id, lastname, name, desiredJobPosition,
