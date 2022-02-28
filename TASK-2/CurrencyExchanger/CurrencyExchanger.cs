@@ -1,4 +1,7 @@
+using static CurrencyExchanger.Data.CurrencyTypes;
+
 namespace CurrencyExchanger;
+
 public class CurrencyExchanger
 {
     public static void ExchangeCurrency()
@@ -6,11 +9,12 @@ public class CurrencyExchanger
 
         var usdRate = Data.usdRate;
         var euroRate = Data.euroRate;
-        var rubRate = Data.rubRate; // currency rates
+        var rubRate = Data.rubRate; 
         
         var cashFee = Data.cashFee;
-        
-        var temporaryByn = 0.0; // for processing
+        var currencyTypeFrom = 0; 
+        var currencyTypeInto = 0;
+        var temporaryByn = 0.0;
         var result = 0.0;
     
         Console.WriteLine("Enter amount and currency you need to convert FROM");
@@ -22,36 +26,54 @@ public class CurrencyExchanger
     
         Console.WriteLine("Enter currency you need to convert INTO");
         var currencyInto = Console.ReadLine();
-    
-        switch (parsedCurrencyFrom)
+
+        if (parsedCurrencyFrom == "USD")
         {
-            case "USD" :
+            currencyTypeFrom = 0;
+        }
+        else
+        {
+            currencyTypeFrom = parsedCurrencyFrom == "EURO" ? 1 : 2;
+        }
+        
+        if (currencyInto == "USD")
+        {
+            currencyTypeInto = 0;
+        }
+        else
+        {
+            currencyTypeInto = currencyInto == "EURO" ? 1 : 2;
+        }
+    
+        switch (currencyTypeFrom)
+        {
+            case (int)Usd :
                 temporaryByn = amount * usdRate;
-                result = currencyInto switch
+                result = currencyTypeInto switch
                 {
-                    "USD" => temporaryByn / usdRate,
-                    "EURO" => temporaryByn / euroRate,
-                    "RUB" => temporaryByn / rubRate,
+                    (int) Usd => temporaryByn / usdRate,
+                    (int) Euro => temporaryByn / euroRate,
+                    (int) Rub => temporaryByn / rubRate,
                     _ => result
                 };
                 break;
-            case "EURO" :
+            case (int)Euro:
                 temporaryByn = amount * euroRate;
-                result = currencyInto switch
+                result = currencyTypeInto switch
                 {
-                    "USD" => temporaryByn / usdRate,
-                    "EURO" => temporaryByn / euroRate,
-                    "RUB" => temporaryByn / rubRate,
+                    (int) Usd => temporaryByn / usdRate,
+                    (int) Euro => temporaryByn / euroRate,
+                    (int) Rub => temporaryByn / rubRate,
                     _ => result
                 };
                 break;
-            case "RUB" :
+            case (int)Rub :
                 temporaryByn = amount * rubRate;
-                result = currencyInto switch
+                result = currencyTypeInto switch
                 {
-                    "USD" => temporaryByn / usdRate,
-                    "EURO" => temporaryByn / euroRate,
-                    "RUB" => temporaryByn / rubRate,
+                    (int) Usd => temporaryByn / usdRate,
+                    (int) Euro => temporaryByn / euroRate,
+                    (int) Rub => temporaryByn / rubRate,
                     _ => result
                 };
                 break;

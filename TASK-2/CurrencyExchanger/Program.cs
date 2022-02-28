@@ -1,2 +1,9 @@
-﻿
-CurrencyExchanger.CurrencyExchanger.ExchangeCurrency();
+﻿namespace CurrencyExchanger;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        CurrencyExchanger.ExchangeCurrency();
+    }
+}
