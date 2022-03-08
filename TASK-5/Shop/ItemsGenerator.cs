@@ -1,10 +1,11 @@
 using Bogus;
+using Shop.Models;
 
 namespace Shop;
 
 public static class ItemsGenerator
 {
-    static List<Item> groceryBag = new();
+    public static List<Item> groceryBag = new();
 
     public static List<Item> GenerateFewItemsGroceryBag()
     {
@@ -22,33 +23,13 @@ public static class ItemsGenerator
 
         return groceryBag;
     }
-
-    public static Item AddOneItemFromConsole()
-    {
-        Console.Write("You are going to create new Item \nEnter new item's barcode \n"); //Add validation for input;
-        var inputBarcode = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Enter item's name \n");
-        var inputItemName = Console.ReadLine();
-        Console.Write("Enter item's name/type \n");
-        var inputCategory = Console.ReadLine();
-        Console.Write("Enter item's price \n");
-        var inputPrice = Convert.ToInt32(Console.ReadLine());
-        var newGood = new Item(inputBarcode, inputItemName, inputCategory, inputPrice);
-        return newGood;
-    }
-    
-    public static List<Item> AddToGroceryBagFromConsole()
-    {
-        groceryBag.Add(AddOneItemFromConsole()); //дописать собирание в ордер;
-        return groceryBag;
-    }
-    
+  
     public static void DisplayItems(List<Item> groceryBag)
     {
         Console.WriteLine("\n");
         foreach (var item in groceryBag)
         { 
-            Console.WriteLine($"ITEM: {item.itemName}, {item.category}, barcode #{item.barcode}, costs {item.price}$");
+            Console.WriteLine($"ITEM: {item.ItemName}, {item.Category}, barcode #{item.Barcode}, costs {item.Price}$");
         }
         
     }

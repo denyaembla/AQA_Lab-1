@@ -1,43 +1,29 @@
 using Bogus;
+using Microsoft.CSharp.RuntimeBinder;
+using Shop.Models;
 
 namespace Shop;
 
-public class UserFactory
+public static class UserFactory
 {
-    public static int counter = 1;
-    static List<User> usersContainer = new();
+    public static int Counter = 1;
+    public static List<User> UsersContainer = new();
     public static User GenerateUser()
     {
         var user = new Faker<User>().CustomInstantiator(
             faker => new User(
-                counter++,          //assignment of ID as a counter (1-2-3-4-5).
+                Counter++,          //assignment of ID as a counter (1-2-3-4-5).
                 faker.Name.FirstName(),
                 faker.Name.LastName(),
                 faker.Random.Int(16, 35)));
         return user;
     }
-    
-    public static List<User> GenerateRandomAmountOfUsers()        //Adds random amount of users to usersContainer in form of another list<User>;
-    {
-        var randomAmount = new Random();
-        var amount = Convert.ToInt32(randomAmount.Next(2, 2));
-        for (int i = 1; i <= amount; i++)        //without random while testing;
-        {
-            usersContainer.Add(new Faker<User>().CustomInstantiator(
-                faker => new User(
-                    counter++,          //assignment of ID as a counter (1-2-3-4-5).
-                    faker.Name.FirstName(),
-                    faker.Name.LastName(),
-                    faker.Random.Int(16, 35))));
-        }
-        return usersContainer;
-    }
-    public static User GenerateUserFromConsole()
+    public static void AddUserFromConsole()
     {
         Console.Write("You are going to create new user \n Enter new user's passportID \n"); //Add validation;
         var inputPassportId = Convert.ToInt32(Console.ReadLine());
 
-        if (Validation.SameIdChecker(inputPassportId, usersContainer))
+        if (Validation.SameIdChecker(inputPassportId, UsersContainer))
         {
             Console.Write("Enter new user's name \n");
             var inputName = Console.ReadLine();
@@ -46,26 +32,33 @@ public class UserFactory
             Console.Write("Enter new user's age \n");
             var inputAge = Convert.ToInt32(Console.ReadLine());
             var newUser = new User(inputPassportId, inputName, inputLastname, inputAge);
-            return newUser;
+            UsersContainer.Add(newUser);
         }
-
-        throw new Exception("User with this passport ID already exists");
+        else
+        {
+            throw new Exception("User with this passport ID already exists");
+        }
+        
     }
     
-    
-    public static List<User> AddNewUserToContainer(User user)
+    public static List<User> GenerateRandomAmountOfUsers()
     {
-        usersContainer.Add(user);
-        return usersContainer;
+        var randomAmount = new Random();
+        var amount = Convert.ToInt32(randomAmount.Next(2, 2));
+        for (int i = 1; i <= amount; i++)
+        {
+            UsersContainer.Add(GenerateUser());
+        }
+        return UsersContainer;
     }
-
+    
     public static void DisplayUser(User user)
     {
-        Console.WriteLine($"{user._name} {user._lastname} with ID-{user.passportID} is {user._age} years old.");
+        Console.WriteLine($"\n{user.Name} {user.Lastname} with ID-{user.PassportId} is {user.Age} years old.");
     }
     public static void DisplayEveryUser()
     {
-        foreach (var u in usersContainer)
+        foreach (var u in UsersContainer)
         {
             DisplayUser(u);
         }
