@@ -6,7 +6,7 @@ namespace Shop;
 
 public static class UserFactory
 {
-    public static int Counter = 1;
+    private static int Counter = 1;
     public static List<User> UsersContainer = new();
     public static User GenerateUser()
     {
@@ -41,11 +41,11 @@ public static class UserFactory
         
     }
     
-    public static List<User> GenerateRandomAmountOfUsers()
+    public static List<User> GenerateFiveUsers()
     {
         var randomAmount = new Random();
-        var amount = Convert.ToInt32(randomAmount.Next(2, 2));
-        for (int i = 1; i <= amount; i++)
+        var amount = Convert.ToInt32(randomAmount.Next(5, 5));
+        for (var i = 1; i <= amount; i++)
         {
             UsersContainer.Add(GenerateUser());
         }

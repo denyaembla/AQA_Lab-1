@@ -3,7 +3,7 @@ using Shop.Models;
 
 namespace Shop;
 
-public static class ItemsGenerator
+public class ItemsGenerator
 {
     public static List<Item> groceryBag = new();
 
@@ -20,7 +20,6 @@ public static class ItemsGenerator
                         "Milk Products", "Juices", "Alcohol"),
                     faker.Random.Int(10, 25))));
         }
-
         return groceryBag;
     }
   

@@ -2,7 +2,7 @@ using Shop.Models;
 
 namespace Shop;
 
-public static class Filler
+public class Filler
 {
 
     public static void FillEveryUserBagRandomly(List<User> usersContainer)
@@ -11,7 +11,6 @@ public static class Filler
         {
             u.GroceryBag = new List<Item>(ItemsGenerator.GenerateFewItemsGroceryBag());
         }
-        
     }
 
     public static void AddOneItemToBagFromConsole()
