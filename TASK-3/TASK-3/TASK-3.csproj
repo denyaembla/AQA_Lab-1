@@ -9,18 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\..\..\zxc\AQA_Lab-1\TASK-4\Drivers\Car.cs">
-        <Link>Car.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\..\zxc\AQA_Lab-1\TASK-4\Drivers\Program.cs">
-        <Link>Program.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\..\zxc\AQA_Lab-1\TASK-4\Drivers\Stats.cs">
-        <Link>Stats.cs</Link>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Bogus" Version="34.0.1" />
     </ItemGroup>
 
