@@ -1,6 +1,6 @@
-using Task_3.Generators;
+using Task_4.Generators;
 
-namespace Task_3.ReportGenerators;
+namespace Task_4.ReportGenerators;
 
 public class CandidateReportGenerator : CandidateGenerator
 {

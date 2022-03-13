@@ -1,7 +1,7 @@
 using Bogus;
-using Task_3.Models;
+using Task_4.Models;
 
-namespace Task_3.Generators;
+namespace Task_4.Generators;
 
 public class EmployeeGenerator : Employee
 {

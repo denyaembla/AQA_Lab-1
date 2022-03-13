@@ -1,4 +1,4 @@
-namespace Task_3.Models;
+namespace Task_4.Models;
 
 public class Candidate
 {
