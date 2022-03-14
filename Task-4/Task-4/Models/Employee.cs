@@ -3,28 +3,15 @@ namespace Task_4.Models;
 public class Employee
 {
     public Guid Id = Guid.NewGuid();
-    public string Lastname { get; }
-    public string Name { get; }
-    public string JobTitle { get; }
-    public string CompanyName { get; }
-    public string CompanyCountry { get; }
-    public string CompanyCity { get; }
-    public string CompanyStreet { get; }
-    public int Salary { get; }
-    public Employee(Guid id, string lastname, string name, string jobTitle, string companyName,
-        string companyCountry, string companyCity, string companyStreet, int salary)
-    {
-        
-        Lastname = lastname;
-        Name = name;
-        JobTitle = jobTitle;
-        CompanyName = companyName;
-        CompanyCountry = companyCountry;
-        CompanyCity = companyCity;
-        CompanyStreet = companyStreet;
-        Salary = salary;
-    }
-
+    public string Lastname { get; set; }
+    public string Name { get; set; }
+    public string JobTitle { get; set; }
+    public string CompanyName { get; set; }
+    public string CompanyCountry { get; set; }
+    public string CompanyCity { get; set; }
+    public string CompanyStreet { get; set; }
+    public int Salary { get; set; }
+    
     public void Display()
     {
         Console.WriteLine($"I am {Name + " " + Lastname}, {JobTitle}, I am employee in {CompanyName}, " + 

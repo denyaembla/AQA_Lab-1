@@ -5,31 +5,33 @@ namespace Task_4.Generators;
 
 public class CandidateGenerator : Candidate
 {
-    public CandidateGenerator(Guid id, string lastname, string name, string desiredJobPosition,
-        string desiredJobDescription, int desiredSalary)
-        : base(id, lastname, name, desiredJobPosition, desiredJobDescription, desiredSalary)
+    protected static List<Candidate> candContainer = new();
+    static readonly Random randomAmount = new();
+    static readonly Random randomSalary = new();
+    private static Candidate GenerateCandidate()
     {
+        var candidate = new Faker<Candidate>().
+            CustomInstantiator(f => new Candidate())
+            .RuleFor(c => c.Lastname, (f, c) => f.Name.LastName())
+            .RuleFor(c => c.Name, (f, c) => f.Name.FirstName())
+            .RuleFor(c => c.DesiredSalary, (f, c) => randomSalary.Next(500, 2500))
+            .RuleFor(c => c.DesiredJobDescription, (f, c) => f.Name.JobDescriptor())
+            .RuleFor(c => c.DesiredJobPosition, (f, c) => f.Name.JobTitle())
+            .RuleFor(c => c.Id, f => Guid.NewGuid());
         
+        return candidate.Generate();
     }
-    public static List<Candidate> candContainer = new();
-    static Random count = new();
-    static Random randomSalary = new();
 
-    public static void GenerateOneCandidate()
+    public static void AddCandidate()
     {
-        candContainer.Add(new Faker<Candidate>().CustomInstantiator(fake => new Candidate(
-            new Guid(),
-            fake.Name.FirstName(),
-            fake.Name.LastName(),
-            fake.Name.JobTitle(),
-            fake.Name.JobDescriptor(),
-            randomSalary.Next(500, 2500))));
+        candContainer.Add(GenerateCandidate());
     }
     public static void GenerateAFewCandidates()
     {
-        for (var i = 0; i < count.Next(2, 2); i++)
+        for (var i = 0; i < randomAmount.Next(2, 2); i++)
         {
-            GenerateOneCandidate();
+            AddCandidate();
         }
     }
+    
 }

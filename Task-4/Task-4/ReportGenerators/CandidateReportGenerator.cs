@@ -4,12 +4,6 @@ namespace Task_4.ReportGenerators;
 
 public class CandidateReportGenerator : CandidateGenerator
 {
-    protected CandidateReportGenerator(Guid id, string lastname, string name, string desiredJobPosition,
-        string desiredJobDescription, int desiredSalary)
-        : base(id, lastname, name, desiredJobPosition,
-        desiredJobDescription, desiredSalary)
-    {
-    }
     private static void SortCandidates()
     {
         candContainer.Sort((c1, c2) =>
@@ -24,8 +18,8 @@ public class CandidateReportGenerator : CandidateGenerator
         Console.WriteLine("Candidates list: \n");
         foreach (var candidate in candContainer)
         {
-            Console.WriteLine($"{candidate.Id}, {candidate.Lastname} {candidate.Name}," +
-                              $" {candidate.DesiredJobPosition}, salary {candidate.DesiredSalary}"); 
+            Console.WriteLine($"{candidate.Id} || {candidate.Lastname} {candidate.Name} ||" +
+                              $" {candidate.DesiredJobPosition}|| salary {candidate.DesiredSalary}"); 
         }
     }
 

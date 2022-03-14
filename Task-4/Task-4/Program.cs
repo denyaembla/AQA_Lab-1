@@ -1,14 +1,14 @@
 ﻿using Task_4.Generators;
 using Task_4.ReportGenerators;
 
-CandidateGenerator.GenerateOneCandidate();
+CandidateGenerator.AddCandidate();
 UserFactory.GenerateUser();
 CandidateGenerator.GenerateAFewCandidates();
 CandidateReportGenerator.CandidateReport();
 
 Console.WriteLine("\n \n ");
 
-EmployeeGenerator.GenerateOneEmployee();
+EmployeeGenerator.GenerateEmployee();
 UserFactory.GenerateUser();
 EmployeeGenerator.GenerateAFewEmployees();
 EmployeeReportGenerator.EmployeeReport();

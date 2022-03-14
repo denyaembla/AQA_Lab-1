@@ -12,10 +12,10 @@ public class UserFactory
         switch (userType)
         {
             case 1:
-                EmployeeGenerator.GenerateOneEmployee();
+                EmployeeGenerator.AddEmployee();
                 break;
             case 2:
-                CandidateGenerator.GenerateOneCandidate();
+                CandidateGenerator.AddCandidate();
                 break;
         }
     }
