@@ -3,28 +3,27 @@ using Bogus;
 namespace TASK_3;
 
 public class Vehicle
-{ 
-    public string Model;
-    public int Year;
-    public string Owner;
-    public Engine Engine;
-    public Vehicle(string model, int year, string owner, Engine engine)
-    {
-        Model = model;
-        Year = year;
-        Owner = owner;
-        Engine = engine;
-    }
-
-   
+{
+    internal string Model { get; set; }
+    private int Year { get; set; }
+    private string Owner { get; set; }
+    internal Engine _Engine { get; set; }
+    
+    private string[] _carTypes = {"123"};
+    private const int MinimumManufactureYear = 1930;
+    private const int MaximumManufactureYear = 2020;
+    
     public static Vehicle CreateVehicle()
     {
         var vehicle = new Faker<Vehicle>()
-            .CustomInstantiator(faker => new Vehicle(
-                faker.PickRandom("Volvo S90", "Mercedes CV-930", "Audi V2020"),
-                faker.Random.Int(min: 1960, max: 2022),
-                User.Lastname,
-                Engine.CreateEngine()));
-        return vehicle;
-    }   
+            .CustomInstantiator(faker => new Vehicle())
+            .RuleFor(v => v.Model, (f, v) => f.Vehicle.Manufacturer())
+            .RuleFor(v => v.Year, (f, v) => f.Random.Int(
+                MinimumManufactureYear, MaximumManufactureYear))
+            .RuleFor(v => v.Owner, (f, v) => f.Name.FullName())
+            .RuleFor(v => v._Engine, (f, v) => Engine.CreateEngine());
+
+        return vehicle.Generate();
+    }
+ 
 }

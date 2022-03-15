@@ -1,6 +1,6 @@
 namespace TASK_3;
 
-public class Stats
+public class Data
 {
     protected TimeOnly DrivingExpirience = new TimeOnly(10,10);
     protected int Consumption = 100;

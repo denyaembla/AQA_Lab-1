@@ -1,9 +1,7 @@
 namespace TASK_3;
 
-public abstract class User
+public class User
 {
-    public static string Name;
-    public static string Lastname;
-    public static DateTimeOffset BirthDateTime;
-    public static bool IsEligibleToDrive = true;
- }
+    public string Fullname { get; set; }
+    public DateTimeOffset BirthDateTime { get; set; }
+}

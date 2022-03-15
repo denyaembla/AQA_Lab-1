@@ -4,26 +4,32 @@ namespace TASK_3;
 
 public class Engine
 {
-    public int Capacity;
-    public int Power;
-    public double MaxSpeed;
-    public string FuelType;
+    public int Capacity { get; set; }
+    public int Power{ get; set; }
+    public double MaxSpeed { get; set; }
+    public string FuelType { get; set; }
     
-    public Engine(int capacity, int power,  double maxSpeed, string fuelType)
-    {
-        Capacity = capacity;
-        Power = power;
-        MaxSpeed = maxSpeed;
-        FuelType = fuelType;
-    }
+    
+    private const int MinimumCapacity = 50;
+    private const int MaximumCapacity = 170;
+    private const int MinimumPower = 50;
+    private const int MaximumPower = 170;
+    private const double MinimumSpeed = 90;
+    private const double MaximumSpeed = 140;
+
+
+    private static readonly string[] _fuelTypes = {"Gasoline", "Diesel"};
+    
+    
     public static Engine CreateEngine()
     {
-        Engine engine =  new Faker<Engine>()
-            .CustomInstantiator(faker => new Engine(
-                faker.Random.Int(min:50, max:250),
-                faker.Random.Int(min:70, max:160),
-                faker.Random.Double(100, 220),
-                faker.PickRandom("Diesel", "Gasoline")));
-        return engine;
+        var engine = new Faker<Engine>()
+            .CustomInstantiator(faker => new Engine())
+            .RuleFor(e => e.Capacity, (f, e) => f.Random.Int(MinimumCapacity, MaximumCapacity))
+            .RuleFor(e => e.Power, (f, e) => f.Random.Int(MinimumPower, MaximumPower))
+            .RuleFor(e => e.MaxSpeed, (f, e) => f.Random.Double(MinimumSpeed, MaximumSpeed))
+            .RuleFor(e => e.FuelType, (f, e) => f.PickRandomParam(_fuelTypes));
+             
+        return engine.Generate();
     }
 }
