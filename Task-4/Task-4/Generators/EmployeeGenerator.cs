@@ -5,18 +5,20 @@ namespace Task_4.Generators;
 
 public class EmployeeGenerator : Employee
 {
-    public static List<Employee> employeeContainer = new();
-    public static Random count = new();
-    public static Random randomSalary = new();
+    protected static List<Employee> EmployeeContainer = new();
+    private static Random Count = new();
+    private const decimal MinimumSalary = 1000;
+    private const decimal MaximumSalary = 2500;
 
-    public static Employee GenerateEmployee()
+
+    private static Employee GenerateEmployee()
     {
         var employee = new Faker<Employee>()
                 .RuleFor(e => e.Id, Guid.NewGuid)
                 .RuleFor(e => e.Name, f => f.Person.FirstName)
                 .RuleFor(e => e.Lastname, f => f.Person.LastName)
                 .RuleFor(e => e.JobTitle, f => f.Name.JobTitle())
-                .RuleFor(e => e.Salary, f => f.Finance.Amount())
+                .RuleFor(e => e.Salary, f => f.Finance.Amount(MinimumSalary, MaximumSalary))
                 .RuleFor(e => e.CompanyName, f => f.Company.CompanyName())
                 .RuleFor(e => e.CompanyCountry, f => f.Address.Country())
                 .RuleFor(e => e.CompanyCity, f => f.Address.City())
@@ -27,11 +29,11 @@ public class EmployeeGenerator : Employee
 
     public static void AddEmployee()
     {
-        employeeContainer.Add(GenerateEmployee());
+        EmployeeContainer.Add(GenerateEmployee());
     }
     public static void GenerateAFewEmployees()
     {
-        for (var i = 0; i < count.Next(minValue: 3, maxValue: 3); i++)
+        for (var i = 0; i < Count.Next(minValue: 2, maxValue: 4); i++)
         {
             AddEmployee();
         }
