@@ -9,7 +9,7 @@ public class Vehicle
     private string Owner { get; set; }
     internal Engine _Engine { get; set; }
     
-    private string[] _carTypes = {"123"};
+    private string[] _carTypes = {"SportCar", "Minivan", "Truck"};
     private const int MinimumManufactureYear = 1930;
     private const int MaximumManufactureYear = 2020;
     

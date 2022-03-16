@@ -23,7 +23,8 @@ public class Driver : User
             .RuleFor(d => d._Vehicle, (f, d) => Vehicle.CreateVehicle())
             .RuleFor(d => d.BirthDateTime, (f, d) => f.Date.BetweenOffset(
                 MinimumBirthDate, MaximumBirthDate))
-            .RuleFor(d => d.LicenseDate, (f,d) => f.Date.BetweenOffset(MinimumLicenceDate, MaximumLicenceDate));
+            .RuleFor(d => d.LicenseDate, (f,d) => f.Date.BetweenOffset(
+                MinimumLicenceDate, MaximumLicenceDate));
 
         return driver.Generate();
     }
