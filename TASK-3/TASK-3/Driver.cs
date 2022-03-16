@@ -5,6 +5,7 @@ namespace TASK_3;
 
 public class Driver : User
 {
+    //private string FullName;
     private Guid Id { get; set; }
     private DateTimeOffset LicenseDate { get; set; }
     private Vehicle _Vehicle { get; set; }

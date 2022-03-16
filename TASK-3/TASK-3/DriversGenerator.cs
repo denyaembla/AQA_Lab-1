@@ -11,8 +11,10 @@ public class DriversGenerator
         var driver3 = Driver.CreateDriver();
         Driver.DisplayDriver(driver3);
         var chosenDriver = new Driver();
+        
         Console.WriteLine("Please, choose your driver");
         var driverToChoose = Convert.ToInt32(Console.ReadLine());
+        
         switch (driverToChoose)
         {
             case 1:
@@ -31,18 +33,26 @@ public class DriversGenerator
         }
 
         Console.Out.WriteLine($"Chosen driver is = {chosenDriver.Fullname}");
-        Console.WriteLine("Choose stats to show: \n Enter '1' to see vehicle technical stats " +
-                          "\nEnter '2' to see exploitation stats ");
-        var statsType = Convert.ToInt32(Console.ReadLine());
-        switch(statsType)
+        var statsType = 1;
+        while (statsType is 1 or 2)
         {
-            case 1:
-                Driver.DisplayVehicleStats(chosenDriver);
+            Console.WriteLine("Choose stats to show: \n Enter '1' to see vehicle technical stats " +
+                              "\nEnter '2' to see exploitation stats," +
+                              "\nTo exit press 3");
+            statsType = Convert.ToInt32(Console.ReadLine());
+            switch(statsType)
+            {
+                case 1:
+                    Driver.DisplayVehicleStats(chosenDriver);
+                    break;
                 
-                break;
-            case 2:
-                Driver.DisplayExploitationStats(chosenDriver);
-                break;
+                case 2:
+                    Driver.DisplayExploitationStats(chosenDriver);
+                    break;
+                default:
+                    statsType = 3;
+                    break;
+            }
         }
     }
 }
