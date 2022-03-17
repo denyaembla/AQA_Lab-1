@@ -10,7 +10,7 @@ public class Employee
     public string CompanyCountry { get; set; }
     public string CompanyCity { get; set; }
     public string CompanyStreet { get; set; }
-    public int Salary { get; set; }
+    public decimal Salary { get; set; }
     
     public void Display()
     {

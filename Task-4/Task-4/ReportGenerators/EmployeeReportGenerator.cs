@@ -2,7 +2,7 @@ using Task_4.Generators;
 
 namespace Task_4.ReportGenerators;
 
-public class EmployeeReportGenerator : EmployeeGenerator
+public class EmployeeReportGenerator : EmployeeGenerator, IReportGenerator
 {
     
     private static void SortEmployees()
@@ -14,7 +14,7 @@ public class EmployeeReportGenerator : EmployeeGenerator
         });
     }
 
-    public static void EmployeeReport()
+    public void Report()
     {
         SortEmployees();
         Console.WriteLine("Employee list: \n");

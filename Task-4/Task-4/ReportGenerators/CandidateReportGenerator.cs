@@ -2,7 +2,7 @@ using Task_4.Generators;
 
 namespace Task_4.ReportGenerators;
 
-public class CandidateReportGenerator : CandidateGenerator
+public class CandidateReportGenerator : CandidateGenerator, IReportGenerator
 {
     private static void SortCandidates()
     {
@@ -12,7 +12,7 @@ public class CandidateReportGenerator : CandidateGenerator
                 return result == 0 ? c1.DesiredJobPosition.CompareTo(c2.DesiredJobPosition) : result;
             });
     }
-    public static void CandidateReport()
+    public void Report()
     {
         SortCandidates();
         Console.WriteLine("Candidates list: \n");

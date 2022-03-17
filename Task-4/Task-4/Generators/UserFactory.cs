@@ -1,21 +1,18 @@
+using Task_4.Models;
+
 namespace Task_4.Generators;
 
 public class UserFactory
 {
-    public static void GenerateUser()
+    public static void GenerateUsers(UserType userType)
     {
-        Console.WriteLine($"Enter 1, if you want to add another Employee.\n" +
-                          $"Enter 2, if you want to add another Candidate.");
-        
-        var userType = Convert.ToInt32(Console.ReadLine());
-        
         switch (userType)
         {
-            case 1:
-                EmployeeGenerator.AddEmployee();
+            case UserType.Employee:
+                EmployeeGenerator.GenerateAFewEmployees();
                 break;
-            case 2:
-                CandidateGenerator.AddCandidate();
+            case UserType.Candidate:
+                CandidateGenerator.GenerateAFewCandidates();
                 break;
         }
     }

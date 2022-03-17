@@ -7,7 +7,7 @@ public class Candidate
     public string Name { get; set; }
     public string DesiredJobPosition { get; set; }
     public string DesiredJobDescription { get; set; }
-    public int DesiredSalary { get; set; }
+    public decimal DesiredSalary { get; set; }
   public void Display()
     {
         Console.WriteLine($"I am {Lastname} {Name}, candidate. I want to be a {DesiredJobPosition} at " +
