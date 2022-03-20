@@ -5,13 +5,11 @@ namespace Task_4.Generators;
 
 public class EmployeeGenerator : Employee
 {
-    protected static List<Employee> EmployeeContainer = new();
-    private static Random Count = new();
-    private const decimal MinimumSalary = 1000;
-    private const decimal MaximumSalary = 2500;
+    internal static readonly Random RandomAmountToGenerate = new();
+    public const decimal MinimumSalary = 1000;
+    public const decimal MaximumSalary = 2500;
 
-
-    private static Employee GenerateEmployee()
+    public static Employee GenerateEmployee()
     {
         var employee = new Faker<Employee>()
                 .RuleFor(e => e.Id, Guid.NewGuid)
@@ -27,15 +25,17 @@ public class EmployeeGenerator : Employee
             return employee.Generate();
     }
 
-    public static void AddEmployee()
+    public static List<Employee> GenerateAFewEmployees()
     {
-        EmployeeContainer.Add(GenerateEmployee());
-    }
-    public static void GenerateAFewEmployees()
-    {
-        for (var i = 0; i < Count.Next(minValue: 2, maxValue: 4); i++)
+        var employeeList = new List<Employee>();
+        for (var i = 0; i < RandomAmountToGenerate.Next(minValue: 3, maxValue: 5); i++)
         {
-            AddEmployee();
+            employeeList.Add(GenerateEmployee());
         }
+        
+        return employeeList;
     }
+
+    
+    
 }

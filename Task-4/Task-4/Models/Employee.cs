@@ -1,8 +1,10 @@
+using System.Collections;
+
 namespace Task_4.Models;
 
-public class Employee
+public class Employee : IDisplay, IUser
 {
-    public Guid Id = Guid.NewGuid();
+    public Guid Id { get; set; }
     public string Lastname { get; set; }
     public string Name { get; set; }
     public string JobTitle { get; set; }
@@ -18,4 +20,5 @@ public class Employee
                           $"{CompanyCountry}, {CompanyCity} town, {CompanyStreet} street," +
                           $" and my salary is {Salary}. My ID number is {Id}");
     }
+    
 }

@@ -3,14 +3,16 @@ using Task_4.Generators;
 using Task_4.Models;
 using Task_4.ReportGenerators;
 
-var employeeReport = new EmployeeReportGenerator();
-var candidateReport = new CandidateReportGenerator();
+var candidateList = UserFactory.GenerateUsers(UserType.Candidate);
+var employeeList = UserFactory.GenerateUsers(UserType.Employee);
 
-UserFactory.GenerateUsers(UserType.Employee);
-UserFactory.GenerateUsers(UserType.Candidate);
-
-candidateReport.Report();
-employeeReport.Report();
+CandidateReportGenerator.DisplayEveryCandidate(candidateList);
+Console.Out.WriteLine();
+CandidateReportGenerator.Report(candidateList);
+Console.Out.WriteLine();
+EmployeeReportGenerator.DisplayEveryEmployee(employeeList);
+Console.Out.WriteLine();
+EmployeeReportGenerator.Report(employeeList);
 
 
 
