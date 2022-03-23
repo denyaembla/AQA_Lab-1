@@ -13,9 +13,4 @@ Console.Out.WriteLine();
 EmployeeReportGenerator.DisplayEveryEmployee(employeeList);
 Console.Out.WriteLine();
 EmployeeReportGenerator.Report(employeeList);
-
-
-
-
-
-
+Console.ReadKey();

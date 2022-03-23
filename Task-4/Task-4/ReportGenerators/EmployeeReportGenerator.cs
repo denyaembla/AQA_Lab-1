@@ -10,27 +10,21 @@ public class EmployeeReportGenerator : EmployeeGenerator
     {
         Console.WriteLine("Employee list (unsorted)");
         var employees = ConvertFromFactory(employeeList);
-        foreach (var employee in employees)
-        {
-            employee.Display();
-        }
+        foreach (var employee in employees) employee.Display();
     }
-    
-    
+
+
     private static List<Employee> ConvertFromFactory(List<IUser> users)
     {
         var employeesResultContainer = new List<Employee>();
-        
+
         foreach (var employee in users)
-        {
             if (employee is Employee)
-            {
                 employeesResultContainer.Add(employee as Employee);
-            }
-        }
 
         return employeesResultContainer;
     }
+
     private static void SortEmployees(List<Employee> employeeContainer)
     {
         employeeContainer.Sort((c1, c2) =>
@@ -43,14 +37,11 @@ public class EmployeeReportGenerator : EmployeeGenerator
     public static void Report(List<IUser> employeeContainer)
     {
         Console.WriteLine("\n Employee list (sorted):");
-        
+
         var employeeResultContainer = ConvertFromFactory(employeeContainer);
         SortEmployees(employeeResultContainer);
         foreach (var employee in employeeResultContainer)
-        {
             Console.WriteLine($"{employee.Id} || {employee.CompanyName} || " +
                               $" {employee.Name} {employee.Lastname} || salary is {employee.Salary}");
-        }
     }
-    
 }

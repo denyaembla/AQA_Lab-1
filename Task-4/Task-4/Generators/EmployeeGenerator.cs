@@ -12,30 +12,24 @@ public class EmployeeGenerator : Employee
     public static Employee GenerateEmployee()
     {
         var employee = new Faker<Employee>()
-                .RuleFor(e => e.Id, Guid.NewGuid)
-                .RuleFor(e => e.Name, f => f.Person.FirstName)
-                .RuleFor(e => e.Lastname, f => f.Person.LastName)
-                .RuleFor(e => e.JobTitle, f => f.Name.JobTitle())
-                .RuleFor(e => e.Salary, f => f.Finance.Amount(MinimumSalary, MaximumSalary))
-                .RuleFor(e => e.CompanyName, f => f.Company.CompanyName())
-                .RuleFor(e => e.CompanyCountry, f => f.Address.Country())
-                .RuleFor(e => e.CompanyCity, f => f.Address.City())
-                .RuleFor(e => e.CompanyStreet, f => f.Address.StreetAddress());
-        
-            return employee.Generate();
+            .RuleFor(e => e.Id, Guid.NewGuid)
+            .RuleFor(e => e.Name, f => f.Person.FirstName)
+            .RuleFor(e => e.Lastname, f => f.Person.LastName)
+            .RuleFor(e => e.JobTitle, f => f.Name.JobTitle())
+            .RuleFor(e => e.Salary, f => f.Finance.Amount(MinimumSalary, MaximumSalary))
+            .RuleFor(e => e.CompanyName, f => f.Company.CompanyName())
+            .RuleFor(e => e.CompanyCountry, f => f.Address.Country())
+            .RuleFor(e => e.CompanyCity, f => f.Address.City())
+            .RuleFor(e => e.CompanyStreet, f => f.Address.StreetAddress());
+
+        return employee.Generate();
     }
 
     public static List<Employee> GenerateAFewEmployees()
     {
         var employeeList = new List<Employee>();
-        for (var i = 0; i < RandomAmountToGenerate.Next(minValue: 3, maxValue: 5); i++)
-        {
-            employeeList.Add(GenerateEmployee());
-        }
-        
+        for (var i = 0; i < RandomAmountToGenerate.Next(3, 5); i++) employeeList.Add(GenerateEmployee());
+
         return employeeList;
     }
-
-    
-    
 }

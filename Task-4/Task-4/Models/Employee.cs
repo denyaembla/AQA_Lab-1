@@ -13,12 +13,11 @@ public class Employee : IDisplay, IUser
     public string CompanyCity { get; set; }
     public string CompanyStreet { get; set; }
     public decimal Salary { get; set; }
-    
+
     public void Display()
     {
-        Console.WriteLine($"I am {Name + " " + Lastname}, {JobTitle}, I am employee in {CompanyName}, " + 
+        Console.WriteLine($"I am {Name + " " + Lastname}, {JobTitle}, I am employee in {CompanyName}, " +
                           $"{CompanyCountry}, {CompanyCity} town, {CompanyStreet} street," +
                           $" and my salary is {Salary}. My ID number is {Id}");
     }
-    
 }
