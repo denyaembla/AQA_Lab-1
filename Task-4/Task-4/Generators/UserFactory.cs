@@ -13,11 +13,11 @@ public class UserFactory
         switch (userType)
         {
             case UserType.Candidate:
-                userList = ConvertToIUserFromCandidates(CandidateGenerator.GenerateAFewCandidates());
+                userList = CandidateGenerator.GenerateAFewCandidates();
                 break;
 
             case UserType.Employee:
-                userList = ConvertToIUserFromEmployee(EmployeeGenerator.GenerateAFewEmployees());
+                userList = EmployeeGenerator.GenerateAFewEmployees();
                 break;
 
             default:
@@ -26,27 +26,5 @@ public class UserFactory
         }
 
         return userList;
-    }
-
-    private static List<IUser> ConvertToIUserFromCandidates(List<Candidate> candidatesList)
-    {
-        var boxedToIUser = new List<IUser>();
-
-        foreach (var user in candidatesList)
-            if (user is IUser)
-                boxedToIUser.Add(user);
-
-        return boxedToIUser;
-    }
-
-    private static List<IUser> ConvertToIUserFromEmployee(List<Employee> employeesList)
-    {
-        var boxedToIUserList = new List<IUser>();
-
-        foreach (var user in employeesList)
-            if (user is IUser)
-                boxedToIUserList.Add(user);
-
-        return boxedToIUserList;
     }
 }

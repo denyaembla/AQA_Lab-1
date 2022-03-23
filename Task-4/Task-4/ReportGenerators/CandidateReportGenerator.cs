@@ -12,7 +12,6 @@ public class CandidateReportGenerator : CandidateGenerator
         foreach (var candidate in candidates) candidate.Display();
     }
 
-
     private static List<Candidate> ConvertFromFactory(List<IUser> users)
     {
         var candidatesContainerToDisplay = new List<Candidate>();

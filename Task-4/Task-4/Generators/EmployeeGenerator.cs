@@ -25,9 +25,9 @@ public class EmployeeGenerator : Employee
         return employee.Generate();
     }
 
-    public static List<Employee> GenerateAFewEmployees()
+    public static List<IUser> GenerateAFewEmployees()
     {
-        var employeeList = new List<Employee>();
+        var employeeList = new List<IUser>();
         for (var i = 0; i < RandomAmountToGenerate.Next(3, 5); i++) employeeList.Add(GenerateEmployee());
 
         return employeeList;
