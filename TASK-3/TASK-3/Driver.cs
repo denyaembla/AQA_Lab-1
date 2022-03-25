@@ -8,7 +8,6 @@ public class Driver : User
     private static readonly DateTimeOffset MinimumBirthDate = new DateTime(1950, 01, 01);
     private static readonly DateTimeOffset MaximumBirthDate = DateTime.Today;
     private static readonly DateTimeOffset MaximumLicenceDate = DateTime.Today;
-    
     private Guid Id { get; set; }
     internal DateTimeOffset LicenseDate { get; set; }
     internal Vehicle _Vehicle { get; set; }
@@ -18,7 +17,7 @@ public class Driver : User
         var birthdayDate = new Faker().Date.BetweenOffset(MinimumBirthDate, MaximumBirthDate);
         return birthdayDate;
     }
-
+    
     private static bool IsDriverValidation(DateTimeOffset birthdayDate)
     {
         return DateTime.Now.Year - birthdayDate.Year >= 16;
@@ -49,7 +48,7 @@ public class Driver : User
                               $" is driver," +
                               $" born on {birthdayToString}," +
                               $" with ID {driver.Id},");
-                              
+
             Console.WriteLine($"License's date of issue: {driver.LicenseDate:dd.MM.yyyy}");
         }
         else
@@ -58,5 +57,4 @@ public class Driver : User
                               $" User age is {DateTime.Now.Year - driver.BirthDateTime.Year}");
         }
     }
-    
 }

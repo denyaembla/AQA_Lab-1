@@ -11,7 +11,6 @@ public class Vehicle
     internal string Owner { get; set; }
     internal Engine _Engine { get; set; }
 
-    
 
     public static Vehicle CreateVehicle()
     {

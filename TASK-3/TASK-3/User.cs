@@ -9,5 +9,4 @@ public class User
     internal DateTimeOffset BirthDateTime { get; set; }
 
     internal bool isDriver;
- 
 }
