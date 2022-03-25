@@ -1,7 +1,13 @@
+using System.ComponentModel;
+using Bogus;
+
 namespace TASK_3;
 
 public class User
 {
-    public string Fullname { get; set; }
-    public DateTimeOffset BirthDateTime { get; set; }
+    internal string Fullname { get; set; }
+    internal DateTimeOffset BirthDateTime { get; set; }
+
+    internal bool isDriver;
+ 
 }
