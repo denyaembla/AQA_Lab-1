@@ -15,7 +15,7 @@ public class Menu
     public static List<User> GenerateFiveUsersWithItems()
     {
         var shopContainer = new List<User>();
-        for (var i = 0; i <= _amount.Next(5,5) ; i++)
+        for (var i = 0; i < _amount.Next(5,5) ; i++)
         {
             shopContainer.Add(UserGenerator.GenerateUserWithItems());
         }
@@ -34,17 +34,18 @@ public class Menu
     public static void DisplayClientPurchases(List<User> users, int userNumber)
     {
         decimal totalPrice = 0;
+        
         foreach (var items in users[userNumber].GroceryBag)
         {
             Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price} || {items.ItemName}");
             totalPrice += items.Price;
         }
-        Console.WriteLine($"Total price is {decimal.Round(totalPrice)}$");
+        Console.WriteLine($"Total: {totalPrice}$");
     }
 
     
     
-    public static void DisplayItems(List<Item> itemBag)
+    public static void DisplayItems(List<Item> itemBag)     //why am i not using this
     {
         Console.WriteLine("\n");
         foreach (var item in itemBag)
@@ -56,27 +57,61 @@ public class Menu
     
     public static void GenerateUserFromConsole(List<User> users) 
     {
-        Console.Write("You are going to create new user \n Enter new user's passportID \n"); //Add validation;
-        var inputPassportId = Convert.ToInt32(Console.ReadLine());
+        Console.Write("You are going to create new user \n Enter new user's passportID \n");
+        var inputPassportId = Convert.ToInt32(Console.ReadLine()) - 1;
 
         if (Validation.SameIdChecker(inputPassportId, users))
         {
-            Console.Write("Enter new user's name \n");
-            var inputName = Console.ReadLine();
-            Console.Write("Enter new user's lastname \n");
-            var inputLastname = Console.ReadLine();
-            Console.Write("Enter new user's age \n");
-            var inputAge = Convert.ToInt32(Console.ReadLine());
-            var validNewUser = new User {PassportId = inputPassportId, 
-                                            Age = inputAge, FullName = inputName + " " + inputLastname};
-            users.Add(validNewUser);
-            Console.Write("You've  added new user successfully");
+            users.Add(UserGenerator.GenerateUserFromConsole(inputPassportId));
+            Console.WriteLine("You've  added new user successfully");
+        }
+        else
+        {
+            Console.WriteLine("You've tried to generate User with already existing Id, user cannot be added");
+        }
+    }
+
+    public static void DeleteItemFromBag(List<User> users)
+    {
+         Console.WriteLine("Choose user, whose purchase you want to remove");
+         var userNumber = Convert.ToInt32(Console.ReadLine()) + 1;
+         
+         DisplayClientPurchases(users, userNumber);
+         
+         Console.WriteLine("Choose item you want to remove");
+         var itemNumberToRemove = Convert.ToInt32(Console.ReadLine()) + 1;
+         
+         Console.WriteLine($"{users[userNumber].FullName}'s purchase" +
+                           $" {users[userNumber].GroceryBag[itemNumberToRemove].ItemName} is removed");
+         users[userNumber].GroceryBag.RemoveAt(itemNumberToRemove);
+         
+         Console.WriteLine($"{users[userNumber].FullName}'s current purchases are: ");
+         DisplayClientPurchases(users, userNumber);
+    }
+
+    public static void AddItemToBag(List<User> users)
+    {
+        Console.WriteLine("Choose userNumber to add new item to");
+        var userNumber = Convert.ToInt32(Console.ReadLine());
+        DisplayClientPurchases(users, userNumber);
+        Console.WriteLine("You are generating item:\n Please, enter 1 to randomize item (can be beer), 2 for beer only");
+        var temporaryItem = new Item();
+        switch (Convert.ToInt32(Console.ReadLine()))
+        {
+            case 1:
+                temporaryItem = ItemGenerator.GenerateItem();
+                break;
+            case 2:
+                temporaryItem = ItemGenerator.GenerateBeer();
+                break;
+        }
+
+        if (Validation.AlcoholAgeChecker(users[userNumber], temporaryItem))
+        {
+            users[userNumber].GroceryBag.Add(temporaryItem);
         }
         
-        Console.WriteLine("You've tried to generate User with already existing Id, user cannot be added");
+        Console.WriteLine($"{users[userNumber].FullName}'s current purchases are: ");
+        DisplayClientPurchases(users, userNumber);
     }
-    
-    
-    
-
 }

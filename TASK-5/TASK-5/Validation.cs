@@ -21,11 +21,9 @@ public class Validation
     public static bool AlcoholAgeChecker(User user, Item item)
     {
         if (user.Age < 18 &&
-            (item.Category.Equals("Alcohol") || item.Category.Equals("Beer")))
+            item.ItemName.Equals("** BEER **"))
         {
-            {
-                Console.WriteLine($"{user.FullName} cannot buy alcohol (age is under 18)");
-            }
+            Console.WriteLine($"{user.FullName} cannot buy alcohol (age is under 18)");
             return false;
         }
 
