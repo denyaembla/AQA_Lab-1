@@ -10,7 +10,10 @@ public class Menu
         {
             var driver = Driver.CreateDriver();
             Driver.DisplayDriver(driver);
-            if (driver.isDriver) driversList.Add(driver);
+            if (driver.isDriver)
+            {
+                driversList.Add(driver);
+            }
         }
 
         Console.Write("\n >> List of viable drivers <<");
@@ -47,7 +50,6 @@ public class Menu
             }
         }
     }
-
 
     private static void DisplayVehicleStats(Driver driver)
     {
