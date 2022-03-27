@@ -9,21 +9,53 @@ public class Menu
     
     public static void MainMenu(List<User> users)
     {
-        
-    }
-    
-    public static List<User> GenerateFiveUsersWithItems()
-    {
-        var shopContainer = new List<User>();
-        for (var i = 0; i < _amount.Next(5,5) ; i++)
+        Console.WriteLine("You are in Main Menu, you can do: \n" +
+                          "1. Display every client.\n" +
+                          "2. Display user's goods with total cost.\n" +
+                          "3. Add new user from the console.\n" +
+                          "4. Add goods to user's bag." +
+                          "5. Remove goods from user's bag.");
+        string input;
+        int menuItem;
+        do
         {
-            shopContainer.Add(UserGenerator.GenerateUserWithItems());
+            Console.WriteLine("Please, enter menu item: ");
+            input = Console.ReadLine();
+        } while (!int.TryParse(input, out menuItem));
+
+        switch (menuItem)
+        {
+            case 1:     
+                DisplayEveryClient(users);
+                break;
+            case 2:
+                DisplayClientPurchases(users);
+                break;
+            case 3:
+                GenerateUserFromConsole(users);
+                break;
+            case 4:
+                AddItemToBag(users);
+                break;
+            case 5:
+                RemoveItemFromBag(users);
+                break;
+        }
+
+    }
+
+    public static List<User> GenerateFiveUsers()
+    {
+        var users = new List<User>();
+        for (int i = 0; i < 5; i++)
+        {
+            users.Add(UserGenerator.GenerateUserWithItems());
         }
         
-        return shopContainer;
+        return users;
     }
-    
-    public static void DisplayEveryClient(List<User> usersContainer)
+
+    private static void DisplayEveryClient(List<User> usersContainer)
     {
         foreach (var user in usersContainer)
         {
@@ -31,10 +63,9 @@ public class Menu
         }
     }
 
-    public static void DisplayClientPurchases(List<User> users, int userNumber)
+    private static void DisplayClientPurchases(List<User> users, int userNumber)
     {
         decimal totalPrice = 0;
-        
         foreach (var items in users[userNumber].GroceryBag)
         {
             Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price} || {items.ItemName}");
@@ -42,10 +73,27 @@ public class Menu
         }
         Console.WriteLine($"Total: {totalPrice}$");
     }
-
     
-    
-    public static void DisplayItems(List<Item> itemBag)     //why am i not using this
+    private static void DisplayClientPurchases(List<User> users)            //overload with manual number input
+    {
+        decimal totalPrice = 0;
+        string input;
+        int itemNumber;
+        do
+        {
+            Console.WriteLine("Please, enter menu item: ");
+            input = Console.ReadLine();
+        } while (!int.TryParse(input, out itemNumber));
+        
+        foreach (var items in users[itemNumber].GroceryBag)
+        {
+            Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price} || {items.ItemName}");
+            totalPrice += items.Price;
+        }
+        Console.WriteLine($"Total: {totalPrice}$");
+    }
+   
+    private static void DisplayItems(List<Item> itemBag)     //why am i not using this???
     {
         Console.WriteLine("\n");
         foreach (var item in itemBag)
@@ -55,7 +103,7 @@ public class Menu
         }
     }
     
-    public static void GenerateUserFromConsole(List<User> users) 
+    private static void GenerateUserFromConsole(List<User> users) 
     {
         Console.Write("You are going to create new user \n Enter new user's passportID \n");
         var inputPassportId = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -71,7 +119,7 @@ public class Menu
         }
     }
 
-    public static void DeleteItemFromBag(List<User> users)
+    private static void RemoveItemFromBag(List<User> users)
     {
          Console.WriteLine("Choose user, whose purchase you want to remove");
          var userNumber = Convert.ToInt32(Console.ReadLine()) + 1;
@@ -89,7 +137,7 @@ public class Menu
          DisplayClientPurchases(users, userNumber);
     }
 
-    public static void AddItemToBag(List<User> users)
+    private static void AddItemToBag(List<User> users)
     {
         Console.WriteLine("Choose userNumber to add new item to");
         var userNumber = Convert.ToInt32(Console.ReadLine());
