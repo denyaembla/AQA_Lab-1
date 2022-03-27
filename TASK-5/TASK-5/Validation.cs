@@ -23,7 +23,9 @@ public class Validation
         if (user.Age < 18 &&
             item.ItemName.Equals("** BEER **"))
         {
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine($"{user.FullName} cannot buy alcohol (age is under 18)");
+            Console.ResetColor();
             return false;
         }
 
