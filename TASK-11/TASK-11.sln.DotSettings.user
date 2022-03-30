@@ -1,0 +1,12 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0d5ab6ff_002D61fa_002D4668_002D8fb5_002D78f768a82dd5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LaminateSmokeTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::03FFEB81-90D0-4E86-8F77-EBB1C59492CE::net6.0::SeleniumBasics.FirstLaminateTest.LaminateSmokeTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b1f83331_002De35e_002D4a13_002Da496_002D1cee14d258e8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="WarmFloorSmokeTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::03FFEB81-90D0-4E86-8F77-EBB1C59492CE::net6.0::SeleniumBasics.Tests.WarmFloorSmokeTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::03FFEB81-90D0-4E86-8F77-EBB1C59492CE::net6.0::SeleniumBasics.SecondLaminateTest.HomeWorkLaminateSecondSmokeTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
