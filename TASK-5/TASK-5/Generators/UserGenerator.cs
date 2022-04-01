@@ -5,46 +5,66 @@ namespace Task_5.Generators;
 
 public class UserGenerator
 {
-    private static int _counter = 1;
     private const int MinimumAge = 16;
     private const int MaximumAge = 60;
-
-    public static User GenerateUserWithoutItems()
+    private const int ItemsAmountToGenerate = 4;
+    
+    public static User CreateUserWithoutItems()
     {
         var userWithoutItems = new Faker<User>().CustomInstantiator(
                 faker => new User())
             .RuleFor(u => u.FullName, (f, u) => f.Name.FullName())
             .RuleFor(u => u.Age, (f, u) => f.Random.Int(MinimumAge, MaximumAge))
-            .RuleFor(u => u.PassportId, (f, u) => _counter++)
+            .RuleFor(u => u.PassportId, (f, u) => Guid.NewGuid())
             .RuleFor(u => u.GroceryBag, (f, u) => new List<Item>());
 
         return userWithoutItems.Generate();
     }
     
-    public static User GenerateUserWithItems()
+    public static User CreateUser()
     {
         var userWithItems = new Faker<User>().CustomInstantiator(
                 faker => new User())
             .RuleFor(u => u.FullName, (f, u)=> f.Name.FullName())
             .RuleFor(u => u.Age, (f, u) => f.Random.Int(MinimumAge, MaximumAge))
-            .RuleFor(u => u.PassportId, (f, u)=> _counter++)
-            .RuleFor(u => u.GroceryBag, (u, f)=> ItemGenerator.GenerateItems());
+            .RuleFor(u => u.PassportId, (f, u)=> Guid.NewGuid())
+            .RuleFor(u => u.GroceryBag, (u, f)=> ItemGenerator.GenerateItems(
+                ItemsAmountToGenerate));
 
         return userWithItems.Generate();
     }
 
-    public static User GenerateUserFromConsole(int passportId)
+    public static User CreateUserUsingConsole(Guid passportId)
     {
         Console.Write("Enter new user's name \n");
         var inputName = Console.ReadLine();
+        while (string.IsNullOrWhiteSpace(inputName) || inputName.Any(char.IsDigit))
+        {
+            Console.WriteLine("User's firstname cannot contain numbers or be empty.");
+            inputName = Console.ReadLine();
+        }
+        
         Console.Write("Enter new user's lastname \n");
         var inputLastname = Console.ReadLine();
+        while (string.IsNullOrWhiteSpace(inputLastname) || inputLastname.Any(char.IsDigit))
+        {
+            Console.WriteLine("User's lastname cannot contain numbers or be empty.");
+            inputLastname = Console.ReadLine();
+        }
+        
         Console.Write("Enter new user's age \n");
-        var inputAge = Convert.ToInt32(Console.ReadLine());
+        var inputAge = Console.ReadLine();
+        int age;
+        while (inputAge == null || !int.TryParse(inputAge, out age))
+        {
+            Console.WriteLine("User's age cannot contain letters or be empty.");
+            inputAge = Console.ReadLine();
+        }
+        
         var user = new User
         {
-            PassportId = passportId, 
-            Age = inputAge,
+            PassportId = passportId,
+            Age = age,
             FullName = inputName + " " + inputLastname,
             GroceryBag = new List<Item>()
         };

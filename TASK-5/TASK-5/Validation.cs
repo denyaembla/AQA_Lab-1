@@ -4,11 +4,11 @@ namespace Task_5;
 
 public class Validation
 {
-    public static bool SameIdChecker(int passportId, List<User> users)
+    public static bool SameIdChecker(Guid passportId, List<User> users)
     {
-        foreach (var u in users)
+        foreach (var user in users)
         {
-            if (u.PassportId.Equals(passportId))
+            if (user.PassportId.Equals(passportId))
             {
                 Console.Out.WriteLine("You are trying to add new User with same passportID");
                 return false;
@@ -21,7 +21,7 @@ public class Validation
     public static bool AlcoholAgeChecker(User user, Item item)
     {
         if (user.Age < 18 &&
-            item.ItemName.Equals("** BEER **"))
+            item.ItemName.Equals("Alcohol"))
         {
             Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine($"{user.FullName} cannot buy alcohol (age is under 18)");

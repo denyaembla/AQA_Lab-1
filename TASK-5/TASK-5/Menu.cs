@@ -5,8 +5,6 @@ namespace Task_5;
 
 public class Menu
 {
-    private static readonly Random _amount = new();
-    
     public static void MainMenu(List<User> users)
     {
         var exit = true;
@@ -52,12 +50,12 @@ public class Menu
         }
     }
 
-    public static List<User> GenerateFiveUsers()
+    public static List<User> GenerateUsers(int count)
     {
         var users = new List<User>();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < count; i++)
         {
-            users.Add(UserGenerator.GenerateUserWithItems());
+            users.Add(UserGenerator.CreateUser());
         }
         
         return users;
@@ -65,25 +63,27 @@ public class Menu
 
     private static void DisplayEveryClient(List<User> usersContainer)
     {
+        var counter = 0;
         Console.WriteLine();
         foreach (var user in usersContainer)
         {
-            Console.WriteLine($"{user.FullName} || Age is {user.Age} || ID is {user.PassportId}");
+            counter++;
+            Console.WriteLine($"{counter}. {user.FullName} || Age is {user.Age} || ID is {user.PassportId}");
         }
     }
 
-    private static void DisplayClientPurchases(List<User> users, int userNumber)        //counting from 1;
+    private static void DisplayClientPurchases(List<User> users, int userNumber)
     {
         decimal totalPrice = 0;
         foreach (var items in users[userNumber-1].GroceryBag)
         {
-            Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price} || {items.ItemName}");
+            Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price}$ || {items.ItemName}");
             totalPrice += items.Price;
         }
         Console.WriteLine($"Total: {totalPrice}$");
     }
     
-    private static void DisplayClientPurchases(List<User> users)            //overload with manual number input
+    private static void DisplayClientPurchases(List<User> users)
     {
         decimal totalPrice = 0;
         string input;
@@ -96,46 +96,42 @@ public class Menu
         
         foreach (var items in users[itemNumber-1].GroceryBag)
         {
-            Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price} || {items.ItemName}");
+            Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price}$ || {items.ItemName}");
             totalPrice += items.Price;
         }
         Console.WriteLine($"Total: {totalPrice}$");
     }
-   
-    private static void DisplayItems(List<Item> itemBag)     //why am i not using this???
-    {
-        Console.WriteLine("\n");
-        foreach (var item in itemBag)
-        { 
-            Console.WriteLine($"ItemName {item.Barcode} || {item.Category}" +
-                              $" || Barcode #{item.ItemName} || costs {item.Price}$");
-        }
-    }
     
-    private static void GenerateUserFromConsole(List<User> users) 
+   private static void GenerateUserFromConsole(List<User> users) 
     {
-        Console.Write("You are going to create new user \n Enter new user's passportID \n");
-        var inputPassportId = Convert.ToInt32(Console.ReadLine());
-
-        if (Validation.SameIdChecker(inputPassportId, users))
+        Console.WriteLine("Enter new user's ID");
+        var userPassportIdInput = Console.ReadLine();
+        Guid passportId;
+        while (string.IsNullOrWhiteSpace(userPassportIdInput) || userPassportIdInput.Length != 32 
+                                                              || !Guid.TryParse(userPassportIdInput, out passportId))
         {
-            users.Add(UserGenerator.GenerateUserFromConsole(inputPassportId));
+            Console.WriteLine("User's passport ID cannot be empty and it's length has to be 32 symbols");
+            userPassportIdInput = Console.ReadLine();
+        }
+        
+        if (Validation.SameIdChecker(passportId, users))
+        {
+            users.Add(UserGenerator.CreateUserUsingConsole(passportId));
             Console.WriteLine("You've added new user successfully");
         }
         else
         {
-            Console.WriteLine("User cannot be added");
+            Console.WriteLine("User cannot be added, this ID already exists");
         }
     }
-
-    
-
+  
     private static void AddItemToBag(List<User> users)
     {
         Console.WriteLine("Choose userNumber to add new item to");
         var userNumber = Convert.ToInt32(Console.ReadLine());
         DisplayClientPurchases(users, userNumber);
-        Console.WriteLine("You are generating item:\n Please, enter 1 to randomize item (can be beer), 2 for beer only");
+        Console.WriteLine("You are in a process of generating item:\n" +
+                          " Please, enter 1 to add a non-alcohol item, 2 for an alcohol item only");
         var temporaryItem = new Item();
         switch (Convert.ToInt32(Console.ReadLine()))
         {
@@ -143,7 +139,7 @@ public class Menu
                 temporaryItem = ItemGenerator.GenerateItem();
                 break;
             case 2:
-                temporaryItem = ItemGenerator.GenerateBeer();
+                temporaryItem = ItemGenerator.GenerateAlcoholItem();
                 break;
         }
 
