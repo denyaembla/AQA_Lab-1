@@ -1,0 +1,67 @@
+{
+  "Shops": [
+    {
+      "Id": 1,
+      "Name": "Evroopt",
+      "Description" : "Very cool shop",
+      "PhonesList": [
+        {
+          "Model": "Apple IPhone 12",
+          "IsAvailable": true,
+          "OperatingSystem": "IOS",
+          "Price": "1000",
+          "ShopId": 1
+        },
+        {
+          "Model": "Apple IPhone 13",
+          "IsAvailable": true,
+          "OperatingSystem": "IOS",
+          "Price": "1100",
+          "ShopId": 1
+        },
+        {
+          "Model": "Redmi Note 10",
+          "IsAvailable": true,
+          "OperatingSystem": "Android",
+          "Price": "300",
+          "ShopId": 1
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Pyaterochka",
+      "Description" : "This shop is even better",
+      "PhonesList": [
+        {
+          "Model": "Apple IPhone 13",
+          "IsAvailable": true,
+          "OperatingSystem": "IOS",
+          "Price": "900",
+          "ShopId": 1
+        },
+        {
+          "Model": "Samsung M31",
+          "IsAvailable": true,
+          "OperatingSystem": "Android",
+          "Price": "400",
+          "ShopId": 1
+        },
+        {
+          "Model": "Redmi Note 10",
+          "IsAvailable": true,
+          "OperatingSystem": "Android",
+          "Price": "350",
+          "ShopId": 2
+        },
+        {
+          "Model": "Motorola E-398",
+          "IsAvailable": false,
+          "OperatingSystem": "Proprietary",
+          "Price": "100",
+          "ShopId": 1
+        }
+      ]
+    }
+  ]
+}
