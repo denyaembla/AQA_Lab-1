@@ -7,7 +7,7 @@ namespace Task_6.Services;
 public class FilePathHandler
 {
     private const string DataFolder = "Data";
-    private const string dataFile = "data.json";
+    private const string dataFile = "appsettings.json";
     private const string InvoiceFolder = "InvoiceOutput";
     
     public static string JSonDataPath()

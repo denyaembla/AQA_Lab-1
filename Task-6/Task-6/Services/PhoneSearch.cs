@@ -11,9 +11,9 @@ public class PhoneSearch
             foreach (var shop in shops)
             {
                 var iosDevicesCount = shop.PhonesList.Count(p =>
-                    p.OperatingSystem.Contains("IOS") && p.IsAvailable == true);
+                    p.OperatingSystemType.Contains("IOS") && p.IsAvailable);
                 var androidDevicesCount = shop.PhonesList.Count(p =>
-                    p.OperatingSystem.Contains("Android") && p.IsAvailable);
+                    p.OperatingSystemType.Contains("Android") && p.IsAvailable);
 
                 Console.WriteLine("Shop name: {0}, \nShop ID: {1}.",
                     shop.Name,
@@ -35,9 +35,9 @@ public class PhoneSearch
                 {
                     Console.WriteLine(
                         "Model: {0}\n" +
-                        "Operation system: {1}\n" +
+                        "Operating system: {1}\n" +
                         "Price: {2}$\n",
-                    phone.Model, phone.OperatingSystem, phone.Price);
+                    phone.Model, phone.OperatingSystemType, phone.Price);
                 }
             }
         }
