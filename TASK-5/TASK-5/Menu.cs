@@ -38,7 +38,7 @@ public class Menu
                     GenerateUserFromConsole(users);
                     break;
                 case 4:
-                    AddItemToBag(users);
+                    AddOneItemToBag(users);
                     break;
                 case 5:
                     RemoveItemFromBag(users);
@@ -107,8 +107,8 @@ public class Menu
         Console.WriteLine("Enter new user's ID");
         var userPassportIdInput = Console.ReadLine();
         Guid passportId;
-        while (string.IsNullOrWhiteSpace(userPassportIdInput) || userPassportIdInput.Length != 32 
-                                                              || !Guid.TryParse(userPassportIdInput, out passportId))
+        while (!Validation.InputValidation.GuidValidation(userPassportIdInput) 
+                        || !Guid.TryParse(userPassportIdInput, out passportId))
         {
             Console.WriteLine("User's passport ID cannot be empty and it's length has to be 32 symbols");
             userPassportIdInput = Console.ReadLine();
@@ -125,23 +125,21 @@ public class Menu
         }
     }
   
-    private static void AddItemToBag(List<User> users)
+    private static void AddOneItemToBag(List<User> users)
     {
         Console.WriteLine("Choose userNumber to add new item to");
         var userNumber = Convert.ToInt32(Console.ReadLine());
         DisplayClientPurchases(users, userNumber);
         Console.WriteLine("You are in a process of generating item:\n" +
-                          " Please, enter 1 to add a non-alcohol item, 2 for an alcohol item only");
-        var temporaryItem = new Item();
-        switch (Convert.ToInt32(Console.ReadLine()))
+                          " Please, enter 1 to add a non-alcohol item, 2 for an alcohol item only, \n" +
+                          " enter 3 to generate item manually");
+        var temporaryItem = Convert.ToInt32(Console.ReadLine()) switch
         {
-            case 1:
-                temporaryItem = ItemGenerator.GenerateItem();
-                break;
-            case 2:
-                temporaryItem = ItemGenerator.GenerateAlcoholItem();
-                break;
-        }
+            1 => ItemGenerator.GenerateItems()[0],
+            2 => ItemGenerator.GenerateAlcoholItem(),
+            3 => ItemGenerator.CreateItemManually(),
+            _ => new Item()
+        };
 
         if (Validation.AlcoholAgeChecker(users[userNumber-1], temporaryItem))
         {
