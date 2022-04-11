@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Task_5.Models;
 
 namespace Task_5;
@@ -30,5 +31,45 @@ public class Validation
         }
 
         return true;
+    }
+
+    internal class InputValidation
+    {
+        private const string OnlyLettersPattern = "^[a-zA-Z]+$";
+        private const string GuidPattern = @"\w{32}$";
+        private const string AgePattern = @"^[1-9]{2}$";
+        
+      
+        public static bool NameValidation(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input) || !Regex.Match(
+                    input, OnlyLettersPattern, RegexOptions.IgnoreCase).Success)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
+        public static bool AgeValidation(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input) || !Regex.Match(input, AgePattern).Success)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public static bool GuidValidation(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input) || !Regex.Match(input, GuidPattern).Success)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
+
     }
 }
