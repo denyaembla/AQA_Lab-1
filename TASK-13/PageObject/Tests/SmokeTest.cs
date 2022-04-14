@@ -42,8 +42,13 @@ public class SmokeTest : BaseTest
         checkoutStepOne.ContinueButton.Click();
 
         var checkoutStepTwo = new CheckoutStepTwoPage(Driver, false);
+        IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
+        var totalPrice = js.ExecuteScript(
+            "return document.getElementsByClassName('summary_subtotal_label')[0].childNodes[1].data;")
+            .ToString();
         
-        Assert.AreEqual("Item total: $39.98", checkoutStepTwo.TotalCost.Text);
+        
+        Assert.AreEqual("39.98", totalPrice);
         
         checkoutStepTwo.FinishButton.Click();
 
