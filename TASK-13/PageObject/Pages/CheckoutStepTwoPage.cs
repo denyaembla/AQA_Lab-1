@@ -25,8 +25,10 @@ public class CheckoutStepTwoPage : BasePage
     
     private static readonly By CheckoutStepTwoId = By.ClassName("title");
     private static readonly By TotalCostLocator = By.XPath("//div[@class='summary_subtotal_label']");
+    private static readonly By temp = By.XPath("//div[@class='summary_subtotal_label'][text()[2]]");
     private static readonly By FinishId = By.Id("finish");
     public static IWebElement CheckoutStepTwoTitle => Driver.FindElement(CheckoutStepTwoId);                
-    public IWebElement TotalCost = Driver.FindElement(TotalCostLocator);
-    public IWebElement FinishButton = Driver.FindElement(FinishId);
+    public IWebElement TotalCost => Driver.FindElement(TotalCostLocator);
+    public IWebElement FinishButton => Driver.FindElement(FinishId);
+    public IWebElement tempSomething => Driver.FindElement(temp);
 }

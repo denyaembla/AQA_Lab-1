@@ -1,13 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using PageObject.Pages;
 using PageObject.Services;
-using PageObject.Tests;
 
-namespace PageObject.Smokey;
+namespace PageObject.Tests;
 
 public class SmokeTest : BaseTest
 {
