@@ -9,12 +9,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-      <PackageReference Include="NLog" Version="4.7.14" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="NLog" Version="4.7.14" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="InvoiceOutput" />
+        <Folder Include="InvoiceOutput" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="InvoiceOutput\invoice.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

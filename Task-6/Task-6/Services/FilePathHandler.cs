@@ -7,26 +7,25 @@ namespace Task_6.Services;
 public class FilePathHandler
 {
     private const string DataFolder = "Data";
-    private const string dataFile = "appsettings.json";
+    private const string DataFile = "appsettings.json";
     private const string InvoiceFolder = "InvoiceOutput";
-    
+    private static readonly char Separator = Path.DirectorySeparatorChar;
+    private static string _environmentString = Environment.ProcessPath;
+
     public static string JSonDataPath()
     {
-        var separator = Path.DirectorySeparatorChar;
-        var enviroment = Environment.ProcessPath;
-        var subPath = Directory.GetParent(enviroment).Parent.FullName;
+        
+        var subPath = Directory.GetParent(_environmentString).Parent.FullName;
         var fullPath = Directory.GetParent(subPath).Parent.FullName +
-                                    separator + DataFolder + separator + dataFile;
+                       Separator + DataFolder + Separator + DataFile;
         return fullPath;
     }
-    
+
     public static string InvoiceOutputPath()
     {
-        var separator = Path.DirectorySeparatorChar;
-        var environment = Environment.ProcessPath;
-        var subPath = Directory.GetParent(environment).Parent.FullName;
+        var subPath = Directory.GetParent(_environmentString).Parent.FullName;
         var fullPath = Directory.GetParent(subPath).Parent.FullName +
-                       separator + InvoiceFolder + separator;
+                       Separator + InvoiceFolder + Separator;
         return fullPath;
     }
 }

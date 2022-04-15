@@ -7,6 +7,7 @@ namespace Task_6.Services;
 public class InvoiceHandler
 {
     private static Logger _logger = LogManager.GetCurrentClassLogger();
+
     private static Invoice CreateInvoiceObject(Phone phone)
     {
         var invoice = new Invoice
@@ -18,7 +19,7 @@ public class InvoiceHandler
 
         return invoice;
     }
-    
+
     private static string SerializeInvoice(Invoice invoice)
     {
         var jsonInvoice = "";
@@ -27,16 +28,16 @@ public class InvoiceHandler
 
         return jsonInvoice;
     }
-    
+
     private static void WriteInFile(string json)
     {
         const string fileName = "invoice.json";
         var path = Path.Combine(FilePathHandler.InvoiceOutputPath(), fileName);
         var file = new StreamWriter(path);
-            file.Write(json);
-            file.Close();
+        file.Write(json);
+        file.Close();
     }
-    
+
     public static void HandleInvoice(string filename, Phone phone)
     {
         Invoice invoice = null;
@@ -47,22 +48,22 @@ public class InvoiceHandler
         catch (NullReferenceException ex)
         {
             Messages.BadInvoiceGeneration();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
             throw;
         }
         catch (ArgumentException ex)
         {
             Messages.BadInvoiceGeneration();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
             throw;
         }
         catch (Exception ex)
         {
             Messages.BadInvoiceGeneration();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
             throw;
         }
-        
+
         string jsonInvoice = null;
         try
         {
@@ -71,22 +72,22 @@ public class InvoiceHandler
         catch (NullReferenceException ex)
         {
             Messages.BadInvoiceSerialization();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
         catch (IOException ex)
         {
             Messages.BadInvoiceSerialization();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
         catch (ArgumentNullException ex)
         {
             Messages.BadInvoiceSerialization();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
         catch (JsonSerializationException ex)
         {
             Messages.BadInvoiceSerialization();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
 
         try
@@ -96,24 +97,24 @@ public class InvoiceHandler
         catch (FileNotFoundException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
         catch (IOException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
         catch (ArgumentException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
         catch (NullReferenceException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
         }
-        
+
         Messages.GoodInvoice(invoice);
     }
 }

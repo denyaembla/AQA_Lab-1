@@ -32,7 +32,7 @@ public static class PhonePurchase
 
         return validShops;
     }
-    
+
     public static bool ShopNameIsValid(List<Shop> shops, string userInputShop)
     {
         var phoneCanBeFound = shops.Any(shop => shop.Name.Equals(userInputShop));
@@ -40,17 +40,18 @@ public static class PhonePurchase
         return phoneCanBeFound;
     }
 
-    internal static Phone GetPhone(List<Shop> shops)
+    public static Phone GetPhone(List<Shop> shops)
     {
         Messages.PhoneModelInput();
         var userInputModel = UserInputService.UserInput();
-        
+
         var validShops = new List<Shop>();
         while (!PhoneCanBeFound(shops, userInputModel))
         {
             _logger.Info("Phone model name is wrong. Please, try again");
             userInputModel = UserInputService.UserInput();
         }
+
         try
         {
             if (PhoneCanBeFound(shops, userInputModel))
@@ -80,13 +81,13 @@ public static class PhonePurchase
         Messages.ShopInput();
         var userInputShop = UserInputService.UserInput();
 
-        
+
         while (!ShopNameIsValid(shops, userInputShop))
         {
             Messages.ShopNotFound();
             userInputShop = UserInputService.UserInput();
         }
-        
+
         List<Phone> phones = null;
         try
         {
@@ -96,17 +97,17 @@ public static class PhonePurchase
         }
         catch (ShopNotFoundException ex)
         {
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
             throw;
         }
         catch (InvalidOperationException ex)
         {
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
             throw;
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine(ex);
+            Messages._logger.Info(ex);
             throw;
         }
 
