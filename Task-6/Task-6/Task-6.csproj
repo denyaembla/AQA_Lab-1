@@ -17,10 +17,4 @@
         <Folder Include="InvoiceOutput" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="InvoiceOutput\invoice.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
 </Project>
