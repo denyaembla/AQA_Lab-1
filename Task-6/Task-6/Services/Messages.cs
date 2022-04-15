@@ -7,19 +7,6 @@ public class Messages
 {
     public static Logger _logger = LogManager.GetCurrentClassLogger();
 
-    // public static void Print(string message)
-    // {
-    //     try
-    //     {
-    //         _logger.Info(message);
-    //     }
-    //     catch (NullReferenceException e)
-    //     {
-    //         _logger.Info("**Error: This string is null, check it**.");
-    //         _logger.Info(e.StackTrace);
-    //     }
-    // }
-
     public static void WrongInput()
     {
         _logger.Info("Wrong input, try again.");

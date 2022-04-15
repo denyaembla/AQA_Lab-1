@@ -14,7 +14,6 @@ public class FilePathHandler
 
     public static string JSonDataPath()
     {
-        
         var subPath = Directory.GetParent(_environmentString).Parent.FullName;
         var fullPath = Directory.GetParent(subPath).Parent.FullName +
                        Separator + DataFolder + Separator + DataFile;

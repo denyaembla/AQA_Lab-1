@@ -6,8 +6,6 @@ namespace Task_6.Services;
 
 public static class PhonePurchase
 {
-    private static Logger _logger = LogManager.GetCurrentClassLogger();
-
     private static bool PhoneCanBeFound(List<Shop> shops, string userInputModel)
     {
         var phoneCanBeFound = shops.SelectMany(shop => shop.PhonesList).Any(
@@ -48,7 +46,7 @@ public static class PhonePurchase
         var validShops = new List<Shop>();
         while (!PhoneCanBeFound(shops, userInputModel))
         {
-            _logger.Info("Phone model name is wrong. Please, try again");
+            Messages._logger.Info("Phone model name is wrong. Please, try again");
             userInputModel = UserInputService.UserInput();
         }
 
@@ -59,7 +57,7 @@ public static class PhonePurchase
                 if (PhoneIsInStock(shops, userInputModel))
                 {
                     validShops = GetValidShops(shops, userInputModel);
-                    _logger.Info("Phone {model} successfully found.", userInputModel);
+                    Messages._logger.Info("Phone {model} successfully found.", userInputModel);
                 }
                 else
                 {
@@ -75,7 +73,7 @@ public static class PhonePurchase
         }
         catch (PhoneNotFoundException)
         {
-            _logger.Error("Phone {model} was not found", userInputModel);
+            Messages._logger.Error("Phone {model} was not found", userInputModel);
         }
 
         Messages.ShopInput();

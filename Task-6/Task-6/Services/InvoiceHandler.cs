@@ -6,8 +6,6 @@ namespace Task_6.Services;
 
 public class InvoiceHandler
 {
-    private static Logger _logger = LogManager.GetCurrentClassLogger();
-
     private static Invoice CreateInvoiceObject(Phone phone)
     {
         var invoice = new Invoice
@@ -31,6 +29,7 @@ public class InvoiceHandler
 
     private static void WriteInFile(string json)
     {
+        Directory.CreateDirectory(FilePathHandler.InvoiceOutputPath());
         const string fileName = "invoice.json";
         var path = Path.Combine(FilePathHandler.InvoiceOutputPath(), fileName);
         var file = new StreamWriter(path);

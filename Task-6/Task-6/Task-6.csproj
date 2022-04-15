@@ -9,12 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="NLog" Version="4.7.14" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="InvoiceOutput" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+        <PackageReference Include="NLog" Version="4.7.14"/>
     </ItemGroup>
 
 </Project>
