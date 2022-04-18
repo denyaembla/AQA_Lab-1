@@ -1,4 +1,6 @@
+using Microsoft.VisualBasic;
 using NLog;
+using NLog.Fluent;
 using Task_6.Models;
 
 namespace Task_6.Services;
@@ -7,61 +9,64 @@ public class Messages
 {
     public static Logger _logger = LogManager.GetCurrentClassLogger();
 
+    public static void Info(string message)
+    {
+        _logger.Info(message);
+    }
+
     public static void WrongInput()
     {
-        _logger.Info("Wrong input, try again.");
+        Info("Wrong input, try again.");
     }
 
     public static void PhoneModelsList()
     {
-        _logger.Info("Please, enter a model name or it's part (to display a list).");
+        Info("Please, enter a model name or it's part (to display a list).");
     }
 
     public static void PhoneModelInput()
     {
-        _logger.Info("Please, enter phone model you want to buy.");
+        Info("Please, enter phone model you want to buy.");
     }
 
     public static void ShopInput()
     {
-        _logger.Info("Which shop you want to buy your phone at?");
+        Info("Which shop you want to buy your phone at?");
     }
 
     public static void ShopNotFound()
     {
-        _logger.Info("Shop not found, please try again");
+        Info("Shop not found, please try again");
     }
 
     public static void PhoneNotFound()
     {
-        _logger.Info("Phone not found, please try again.");
+        Info("Phone not found, please try again.");
     }
 
     public static void PhoneOutOfStock()
     {
-        _logger.Info("This phone model is out of stock. You can try your luck with another one.");
+        Info("This phone model is out of stock. You can try your luck with another one.");
     }
 
     public static void GoodInvoice(Invoice invoice)
     {
-        _logger.Info("Order for {model} with {price}$ price is successfully created." +
-                     "Date is {date}",
-            invoice.PhoneModel,
-            invoice.Price, invoice.Date);
+        Info($"Order for {invoice.PhoneModel} with {invoice.Price}$ price is successfully created." +
+             $"Date is {invoice.Date}");
     }
 
     public static void BadInvoiceGeneration()
     {
-        _logger.Info("Invoice object generation went wrong (phone object may be null).");
+        Info("Invoice object generation went wrong (phone object may be null).");
     }
 
     public static void BadInvoiceInfileWriting()
     {
-        _logger.Info("Invoice generation went wrong. Please, try again.");
+        Info("Invoice generation went wrong. Please, try again.");
     }
 
     public static void BadInvoiceSerialization()
     {
-        _logger.Info("Invoice generation went wrong. Please, try again.");
+        Info("Invoice generation went wrong. Please, try again.");
     }
 }

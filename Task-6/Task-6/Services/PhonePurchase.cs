@@ -1,4 +1,3 @@
-using NLog;
 using Task_6.Exceptions;
 using Task_6.Models;
 
@@ -31,7 +30,7 @@ public static class PhonePurchase
         return validShops;
     }
 
-    public static bool ShopNameIsValid(List<Shop> shops, string userInputShop)
+    private static bool ShopNameIsValid(List<Shop> shops, string userInputShop)
     {
         var phoneCanBeFound = shops.Any(shop => shop.Name.Equals(userInputShop));
 
@@ -46,7 +45,7 @@ public static class PhonePurchase
         var validShops = new List<Shop>();
         while (!PhoneCanBeFound(shops, userInputModel))
         {
-            Messages._logger.Info("Phone model name is wrong. Please, try again");
+            Messages.Info("Phone model name is wrong. Please, try again");
             userInputModel = UserInputService.UserInput();
         }
 
@@ -57,7 +56,7 @@ public static class PhonePurchase
                 if (PhoneIsInStock(shops, userInputModel))
                 {
                     validShops = GetValidShops(shops, userInputModel);
-                    Messages._logger.Info("Phone {model} successfully found.", userInputModel);
+                    Messages.Info($"Phone {userInputModel} successfully found.");
                 }
                 else
                 {
@@ -73,7 +72,7 @@ public static class PhonePurchase
         }
         catch (PhoneNotFoundException)
         {
-            Messages._logger.Error("Phone {model} was not found", userInputModel);
+            Messages.Info($"Phone {userInputModel} was not found");
         }
 
         Messages.ShopInput();
@@ -95,17 +94,17 @@ public static class PhonePurchase
         }
         catch (ShopNotFoundException ex)
         {
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
             throw;
         }
         catch (InvalidOperationException ex)
         {
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
             throw;
         }
         catch (NullReferenceException ex)
         {
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
             throw;
         }
 

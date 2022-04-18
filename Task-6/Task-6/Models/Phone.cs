@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace Task_6.Models;
 
 public class Phone

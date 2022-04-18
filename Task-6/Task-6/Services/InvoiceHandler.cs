@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using NLog;
 using Task_6.Models;
 
 namespace Task_6.Services;
@@ -37,9 +36,9 @@ public class InvoiceHandler
         file.Close();
     }
 
-    public static void HandleInvoice(string filename, Phone phone)
+    public static void HandleInvoice(Phone phone)
     {
-        Invoice invoice = null;
+        Invoice invoice;
         try
         {
             invoice = CreateInvoiceObject(phone);
@@ -47,19 +46,19 @@ public class InvoiceHandler
         catch (NullReferenceException ex)
         {
             Messages.BadInvoiceGeneration();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
             throw;
         }
         catch (ArgumentException ex)
         {
             Messages.BadInvoiceGeneration();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
             throw;
         }
         catch (Exception ex)
         {
             Messages.BadInvoiceGeneration();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
             throw;
         }
 
@@ -71,22 +70,22 @@ public class InvoiceHandler
         catch (NullReferenceException ex)
         {
             Messages.BadInvoiceSerialization();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
         catch (IOException ex)
         {
             Messages.BadInvoiceSerialization();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
         catch (ArgumentNullException ex)
         {
             Messages.BadInvoiceSerialization();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
         catch (JsonSerializationException ex)
         {
             Messages.BadInvoiceSerialization();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
 
         try
@@ -96,22 +95,22 @@ public class InvoiceHandler
         catch (FileNotFoundException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
         catch (IOException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
         catch (ArgumentException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
         catch (NullReferenceException ex)
         {
             Messages.BadInvoiceInfileWriting();
-            Messages._logger.Info(ex);
+            Messages.Info($"{ex}");
         }
 
         Messages.GoodInvoice(invoice);

@@ -1,7 +1,3 @@
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.IO;
-
 namespace Task_6.Services;
 
 public class FilePathHandler
@@ -11,20 +7,17 @@ public class FilePathHandler
     private const string InvoiceFolder = "InvoiceOutput";
     private static readonly char Separator = Path.DirectorySeparatorChar;
     private static string _environmentString = Environment.ProcessPath;
+    private static string subPath = Directory.GetParent(_environmentString).Parent.FullName;
 
     public static string JSonDataPath()
     {
-        var subPath = Directory.GetParent(_environmentString).Parent.FullName;
-        var fullPath = Directory.GetParent(subPath).Parent.FullName +
-                       Separator + DataFolder + Separator + DataFile;
+        var fullPath = Directory.GetParent(subPath).Parent.FullName + Separator + DataFolder + Separator + DataFile;
         return fullPath;
     }
 
     public static string InvoiceOutputPath()
     {
-        var subPath = Directory.GetParent(_environmentString).Parent.FullName;
-        var fullPath = Directory.GetParent(subPath).Parent.FullName +
-                       Separator + InvoiceFolder + Separator;
+        var fullPath = Directory.GetParent(subPath).Parent.FullName + Separator + InvoiceFolder + Separator;
         return fullPath;
     }
 }

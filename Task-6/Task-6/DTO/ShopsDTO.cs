@@ -4,5 +4,5 @@ namespace Task_6.DTO;
 
 public class ShopsDTO
 {
-    public List<Shop> shops { get; set; }
+    public List<Shop> Shops { get; set; }
 }
