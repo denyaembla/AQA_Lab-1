@@ -53,11 +53,8 @@ public class Menu
     public static List<User> GenerateUsers(int count)
     {
         var users = new List<User>();
-        for (int i = 0; i < count; i++)
-        {
-            users.Add(UserGenerator.CreateUser());
-        }
-        
+        for (var i = 0; i < count; i++) users.Add(UserGenerator.CreateUser());
+
         return users;
     }
 
@@ -75,14 +72,15 @@ public class Menu
     private static void DisplayClientPurchases(List<User> users, int userNumber)
     {
         decimal totalPrice = 0;
-        foreach (var items in users[userNumber-1].GroceryBag)
+        foreach (var items in users[userNumber - 1].GroceryBag)
         {
             Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price}$ || {items.ItemName}");
             totalPrice += items.Price;
         }
+
         Console.WriteLine($"Total: {totalPrice}$");
     }
-    
+
     private static void DisplayClientPurchases(List<User> users)
     {
         decimal totalPrice = 0;
@@ -93,27 +91,28 @@ public class Menu
             Console.WriteLine("Please, enter User number (starts from 1): ");
             input = Console.ReadLine();
         } while (!int.TryParse(input, out itemNumber));
-        
-        foreach (var items in users[itemNumber-1].GroceryBag)
+
+        foreach (var items in users[itemNumber - 1].GroceryBag)
         {
             Console.WriteLine($"{items.Barcode} || {items.Category} || {items.Price}$ || {items.ItemName}");
             totalPrice += items.Price;
         }
+
         Console.WriteLine($"Total: {totalPrice}$");
     }
-    
-   private static void GenerateUserFromConsole(List<User> users) 
+
+    private static void GenerateUserFromConsole(List<User> users)
     {
         Console.WriteLine("Enter new user's ID");
         var userPassportIdInput = Console.ReadLine();
         Guid passportId;
-        while (!Validation.InputValidation.GuidValidation(userPassportIdInput) 
-                        || !Guid.TryParse(userPassportIdInput, out passportId))
+        while (!Validation.InputValidation.GuidValidation(userPassportIdInput)
+               || !Guid.TryParse(userPassportIdInput, out passportId))
         {
             Console.WriteLine("User's passport ID cannot be empty and it's length has to be 32 symbols");
             userPassportIdInput = Console.ReadLine();
         }
-        
+
         if (Validation.SameIdChecker(passportId, users))
         {
             users.Add(UserGenerator.CreateUserUsingConsole(passportId));
@@ -124,7 +123,7 @@ public class Menu
             Console.WriteLine("User cannot be added, this ID already exists");
         }
     }
-  
+
     private static void AddOneItemToBag(List<User> users)
     {
         Console.WriteLine("Choose userNumber to add new item to");
@@ -141,30 +140,28 @@ public class Menu
             _ => new Item()
         };
 
-        if (Validation.AlcoholAgeChecker(users[userNumber-1], temporaryItem))
-        {
-            users[userNumber-1].GroceryBag.Add(temporaryItem);
-        }
-        
-        Console.WriteLine($"{users[userNumber-1].FullName}'s current purchases are: ");
+        if (Validation.AlcoholAgeChecker(users[userNumber - 1], temporaryItem))
+            users[userNumber - 1].GroceryBag.Add(temporaryItem);
+
+        Console.WriteLine($"{users[userNumber - 1].FullName}'s current purchases are: ");
         DisplayClientPurchases(users, userNumber);
     }
-    
+
     private static void RemoveItemFromBag(List<User> users)
     {
         Console.WriteLine("Choose user, whose purchase you want to remove");
         var userNumber = Convert.ToInt32(Console.ReadLine());
-         
+
         DisplayClientPurchases(users, userNumber);
-         
+
         Console.WriteLine("Choose item you want to remove");
         var itemNumberToRemove = Convert.ToInt32(Console.ReadLine()) - 1;
-         
-        Console.WriteLine($"{users[userNumber-1].FullName}'s purchase" +
-                          $" {users[userNumber-1].GroceryBag[itemNumberToRemove].ItemName} is removed");
-        users[userNumber-1].GroceryBag.RemoveAt(itemNumberToRemove);
-         
-        Console.WriteLine($"{users[userNumber-1].FullName}'s current purchases are: ");
+
+        Console.WriteLine($"{users[userNumber - 1].FullName}'s purchase" +
+                          $" {users[userNumber - 1].GroceryBag[itemNumberToRemove].ItemName} is removed");
+        users[userNumber - 1].GroceryBag.RemoveAt(itemNumberToRemove);
+
+        Console.WriteLine($"{users[userNumber - 1].FullName}'s current purchases are: ");
         DisplayClientPurchases(users, userNumber);
     }
 }

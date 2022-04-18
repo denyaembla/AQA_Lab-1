@@ -19,15 +19,15 @@ public class UserGenerator
 
         return userWithoutItems.Generate();
     }
-    
+
     public static User CreateUser()
     {
         var userWithItems = new Faker<User>().CustomInstantiator(
                 faker => new User())
-            .RuleFor(u => u.FullName, (f, u)=> f.Name.FullName())
+            .RuleFor(u => u.FullName, (f, u) => f.Name.FullName())
             .RuleFor(u => u.Age, (f, u) => f.Random.Int(MinimumAge, MaximumAge))
-            .RuleFor(u => u.PassportId, (f, u)=> Guid.NewGuid())
-            .RuleFor(u => u.GroceryBag, (u, f)=> ItemGenerator.GenerateItems());
+            .RuleFor(u => u.PassportId, (f, u) => Guid.NewGuid())
+            .RuleFor(u => u.GroceryBag, (u, f) => ItemGenerator.GenerateItems());
 
         return userWithItems.Generate();
     }
@@ -41,7 +41,7 @@ public class UserGenerator
             Console.WriteLine("User's firstname cannot contain numbers or be empty.");
             inputName = Console.ReadLine();
         }
-        
+
         Console.Write("Enter new user's lastname \n");
         var inputLastname = Console.ReadLine();
         while (!Validation.InputValidation.NameValidation(inputLastname))
@@ -49,7 +49,7 @@ public class UserGenerator
             Console.WriteLine("User's lastname cannot contain numbers or be empty.");
             inputLastname = Console.ReadLine();
         }
-        
+
         Console.Write("Enter new user's age \n");
         var inputAge = Console.ReadLine();
         int age;
@@ -59,7 +59,7 @@ public class UserGenerator
                               " You are allowed to use our shop if you are over 11 and less than 99 years old.");
             inputAge = Console.ReadLine();
         }
-        
+
         var user = new User
         {
             PassportId = passportId,
