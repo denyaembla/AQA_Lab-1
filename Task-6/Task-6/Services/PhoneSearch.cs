@@ -4,11 +4,7 @@ namespace Task_6.Services;
 
 public class PhoneSearch
 {
-    private enum OperatingSystemType
-    {
-        IOS,
-        Android
-    }
+    
 
     public static void PrintByOperatingSystem(List<Shop> shops)
     {
