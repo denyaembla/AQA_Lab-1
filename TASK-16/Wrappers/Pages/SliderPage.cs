@@ -26,11 +26,11 @@ public class SliderPage : BasePage
             return false;
         }
     }
-    
+
     private By TitleLocator = By.XPath("//div[@class='example']/h3");
     private By SliderLocator = By.XPath("//div[@class='sliderContainer']/input");
-    private By RangeId = By.Id("range");  
-   
+    private By RangeId = By.Id("range");
+
 
     public IWebElement Title => WaitService.WaitForElementExists(TitleLocator);
     public IWebElement Slider => WaitService.WaitForElementExists(SliderLocator);

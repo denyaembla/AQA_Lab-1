@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Wrappers.Pages;
 
 namespace Wrappers.Tests;
@@ -9,10 +10,22 @@ public class SliderTest : BaseTest
     public void Slider_Test()
     {
         var sliderPage = new SliderPage(Driver, true);
-        
-        var sliderStepsInput = 2;
-        Wrappers.Slider.SliderSlide(sliderPage.Slider, sliderStepsInput);
 
-        Assert.AreEqual(sliderStepsInput, sliderPage.Range.Text);
+        var middle = 3.5m;
+        var minimum = 0m;
+        var maximum = 5m;
+
+
+        Wrappers.Slider.SliderSlideByValue(sliderPage.Slider, sliderPage, sliderPage.Range.Text, middle);
+
+        Assert.AreEqual("3.5", sliderPage.Range.Text);
+
+        Wrappers.Slider.SliderSlideByValue(sliderPage.Slider, sliderPage, sliderPage.Range.Text, minimum);
+
+        Assert.AreEqual("0", sliderPage.Range.Text);
+
+        Wrappers.Slider.SliderSlideByValue(sliderPage.Slider, sliderPage, sliderPage.Range.Text, maximum);
+
+        Assert.AreEqual("5", sliderPage.Range.Text);
     }
 }

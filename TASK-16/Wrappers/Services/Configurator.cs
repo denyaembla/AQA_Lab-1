@@ -11,7 +11,7 @@ public static class Configurator
     public static IConfiguration Configuration => s_configuration.Value;
 
     public static string SliderUrl => Configuration.GetSection("URLs").GetSection("Slider").Value;
-    
+
     public static string BrowserType => Configuration[nameof(BrowserType)];
     public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
 
@@ -29,10 +29,7 @@ public static class Configurator
 
         var appSettingFiles = Directory.EnumerateFiles(basePath, "appsettings.*.json");
 
-        foreach (var appSettingFile in appSettingFiles)
-        {
-            builder.AddJsonFile(appSettingFile);
-        }
+        foreach (var appSettingFile in appSettingFiles) builder.AddJsonFile(appSettingFile);
 
         return builder.Build();
     }

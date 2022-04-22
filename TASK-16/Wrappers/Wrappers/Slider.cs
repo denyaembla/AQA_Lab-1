@@ -1,16 +1,28 @@
 ﻿using System;
 using OpenQA.Selenium;
+using Wrappers.Pages;
 
 namespace Wrappers.Wrappers;
 
 public class Slider
 {
-    public static void SliderSlide(IWebElement slider,decimal input)
+    public static void SliderSlideByValue(IWebElement slider, SliderPage sliderPage, string starting, decimal moveTo)
     {
-        var steps = Convert.ToByte(input * 2);  //step is 0.5
-        for (int i = 0; i < steps; i++)
+        if (moveTo < Convert.ToDecimal(slider.GetAttribute("min")) ||
+            moveTo > Convert.ToDecimal(slider.GetAttribute("max")))
+            throw new ArgumentOutOfRangeException(nameof(moveTo));
+
+        var target = moveTo;
+        var current = Convert.ToDecimal(starting);
+
+        while (current != Convert.ToDecimal(target))
         {
-            slider.SendKeys(Keys.ArrowRight);
+            if (current < target)
+                slider.SendKeys(Keys.ArrowRight);
+            else
+                slider.SendKeys(Keys.ArrowLeft);
+
+            current = Convert.ToDecimal(sliderPage.Range.Text);
         }
     }
 }

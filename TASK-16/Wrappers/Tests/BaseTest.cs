@@ -8,7 +8,7 @@ namespace Wrappers.Tests;
 public class BaseTest
 {
     protected static IWebDriver _driver;
-    
+
     [SetUp]
     public void SetUp()
     {
@@ -20,7 +20,7 @@ public class BaseTest
     {
         _driver.Quit();
     }
-    
+
     public static IWebDriver Driver
     {
         get => _driver;

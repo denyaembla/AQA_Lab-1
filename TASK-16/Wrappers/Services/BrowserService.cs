@@ -21,7 +21,7 @@ public class BrowserService
             "firefox" => new DriverFactory().GetFirefoxDriver(),
             _ => Driver
         };
-        
+
         //Driver.Manage().Window.Maximize();
         Driver.Manage().Cookies.DeleteAllCookies();
         Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
