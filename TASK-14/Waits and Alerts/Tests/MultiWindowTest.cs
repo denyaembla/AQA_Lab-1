@@ -1,7 +1,7 @@
-using Alerts_and_Waiters.Pages.WindowManage;
+using Alerts_and_Waits.Pages.WindowManage;
 using NUnit.Framework;
 
-namespace Alerts_and_Waiters.Tests;
+namespace Alerts_and_Waits.Tests;
 
 public class MultiWindowTest : BaseTest
 {

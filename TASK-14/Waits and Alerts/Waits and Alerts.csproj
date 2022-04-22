@@ -6,7 +6,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>Alerts_and_Waiters</RootNamespace>
+        <RootNamespace>Alerts_and_Waits</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

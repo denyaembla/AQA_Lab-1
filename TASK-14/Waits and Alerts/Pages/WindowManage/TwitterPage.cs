@@ -1,7 +1,7 @@
 using System;
 using OpenQA.Selenium;
 
-namespace Alerts_and_Waiters.Pages.WindowManage;
+namespace Alerts_and_Waits.Pages.WindowManage;
 
 public class TwitterPage : BasePage
 {

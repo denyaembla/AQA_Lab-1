@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 
-namespace Alerts_and_Waiters.Services;
+namespace Alerts_and_Waits.Services;
 
 public static class Configurator
 {

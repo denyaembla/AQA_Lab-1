@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Alerts_and_Waiters.Services;
+namespace Alerts_and_Waits.Services;
 
 public class WaitService
 {

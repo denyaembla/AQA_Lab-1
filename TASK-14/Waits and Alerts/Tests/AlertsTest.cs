@@ -1,9 +1,9 @@
 using System;
-using Alerts_and_Waiters.Pages;
-using Alerts_and_Waiters.Pages.Alerts;
+using Alerts_and_Waits.Pages;
+using Alerts_and_Waits.Pages.Alerts;
 using NUnit.Framework;
 
-namespace Alerts_and_Waiters.Tests;
+namespace Alerts_and_Waits.Tests;
 
 public class AlertsTest : BaseTest
 {

@@ -1,9 +1,9 @@
 using System;
-using Alerts_and_Waiters.Services;
+using Alerts_and_Waits.Services;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace Alerts_and_Waiters.Tests;
+namespace Alerts_and_Waits.Tests;
 
 public class BaseTest
 {

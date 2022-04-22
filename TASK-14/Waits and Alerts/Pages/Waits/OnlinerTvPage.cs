@@ -1,9 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
-using Alerts_and_Waiters.Services;
+using Alerts_and_Waits.Services;
 using OpenQA.Selenium;
 
-namespace Alerts_and_Waiters.Pages.Waits;
+namespace Alerts_and_Waits.Pages.Waits;
 
 public class OnlinerTvWaitPage : BasePage
 {

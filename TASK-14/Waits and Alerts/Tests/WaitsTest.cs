@@ -1,8 +1,8 @@
-using Alerts_and_Waiters.Pages.Waits;
+using Alerts_and_Waits.Pages.Waits;
 using NUnit.Framework;
 using OpenQA.Selenium.Interactions;
 
-namespace Alerts_and_Waiters.Tests;
+namespace Alerts_and_Waits.Tests;
 
 public class WaitsTest : BaseTest
 {

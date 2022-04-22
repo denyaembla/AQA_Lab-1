@@ -1,7 +1,7 @@
 using System;
 using OpenQA.Selenium;
 
-namespace Alerts_and_Waiters.Services;
+namespace Alerts_and_Waits.Services;
 
 public class BrowserService
 {

@@ -4,7 +4,7 @@ using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace Alerts_and_Waiters.Services;
+namespace Alerts_and_Waits.Services;
 
 public class DriverFactory
 {

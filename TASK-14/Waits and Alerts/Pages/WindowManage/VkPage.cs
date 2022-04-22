@@ -1,8 +1,8 @@
 using System;
-using Alerts_and_Waiters.Services;
+using Alerts_and_Waits.Services;
 using OpenQA.Selenium;
 
-namespace Alerts_and_Waiters.Pages.WindowManage;
+namespace Alerts_and_Waits.Pages.WindowManage;
 
 public class VkPage : BasePage
 {
