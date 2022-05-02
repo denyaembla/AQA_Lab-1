@@ -10,7 +10,7 @@ public class Calculator
         return first + second;
     }
     
-    public int Substract(int first, int second)
+    public int Subtract(int first, int second)
     {
         return first - second;
     }
@@ -18,6 +18,10 @@ public class Calculator
     public int Multiply(int first, int second)
     {
         return first * second;
+    }
+    public double Divide(double first, double second)
+    {
+        return first / second;
     }
 
     public (int Result, int Remainder) Divide(int first, int second)
