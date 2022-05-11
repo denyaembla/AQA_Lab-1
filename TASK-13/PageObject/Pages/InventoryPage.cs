@@ -8,7 +8,7 @@ namespace PageObject.Pages;
 public class InventoryPage : BasePage
 {
     private const string END_POINT = "/inventory.html";
-    
+
     private static readonly By TitleBy = By.ClassName("title");
     private static readonly By BackPackId = By.Id("item_4_title_link");
     private static readonly By BackToProductsId = By.Id("back-to-products");
@@ -16,9 +16,15 @@ public class InventoryPage : BasePage
     private static readonly By GoToCard = By.CssSelector(".shopping_cart_badge");
     private static readonly By FlashlightId = By.Id("item_0_title_link");
     private static readonly By AddFlashlightToCartId = By.Id("add-to-cart-sauce-labs-bike-light");
-    public InventoryPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl){}
 
-    protected override void OpenPage() => Driver.Navigate().GoToUrl(Configurator.BaseUrl + END_POINT);
+    public InventoryPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
+    {
+    }
+
+    protected override void OpenPage()
+    {
+        Driver.Navigate().GoToUrl(Configurator.BaseUrl + END_POINT);
+    }
 
     protected override bool IsPageOpened()
     {

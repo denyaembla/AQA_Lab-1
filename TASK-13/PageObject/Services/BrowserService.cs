@@ -22,10 +22,8 @@ public class BrowserService
             "firefox" => new DriverFactory().GetFirefoxDriver(),
             _ => WebDriver
         };
-        
+
         WebDriver.Manage().Cookies.DeleteAllCookies();
         WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
     }
-    
-  
 }

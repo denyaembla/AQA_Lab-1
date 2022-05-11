@@ -31,10 +31,7 @@ public static class Configurator
 
         var appSettingFiles = Directory.EnumerateFiles(basePath, "appsettings.json");
 
-        foreach (var appSettingFile in appSettingFiles)
-        {
-            builder.AddJsonFile(appSettingFile);
-        }
+        foreach (var appSettingFile in appSettingFiles) builder.AddJsonFile(appSettingFile);
 
         return builder.Build();
     }

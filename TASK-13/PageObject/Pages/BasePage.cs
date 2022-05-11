@@ -11,7 +11,7 @@ public abstract class BasePage
     [ThreadStatic] private static IWebDriver _driver;
     protected abstract void OpenPage();
     protected abstract bool IsPageOpened();
-    
+
     public static IWebDriver Driver
     {
         get => _driver;
@@ -22,14 +22,11 @@ public abstract class BasePage
     {
         Driver = driver;
 
-        if (openPageByUrl)
-        {
-            OpenPage();
-        }
+        if (openPageByUrl) OpenPage();
 
         WaitForOpening();
     }
-    
+
     private void WaitForOpening()
     {
         var secondsCount = 0;
@@ -42,9 +39,6 @@ public abstract class BasePage
             isPageOpenedIndicator = IsPageOpened();
         }
 
-        if (!isPageOpenedIndicator)
-        {
-            throw new AssertionException("Page wasn't opened");
-        }
+        if (!isPageOpenedIndicator) throw new AssertionException("Page wasn't opened");
     }
 }

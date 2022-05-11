@@ -19,7 +19,7 @@ public class BaseTest
     [TearDown]
     public void TearDown()
     {
-       _driver.Quit();
+        _driver.Quit();
     }
 
     public static void Login()

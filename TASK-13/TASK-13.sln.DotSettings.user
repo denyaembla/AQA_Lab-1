@@ -1,14 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=97bf96d3_002De31a_002D43b7_002Da906_002Dfd336dd39a2d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test_Success_Login" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=97bf96d3_002De31a_002D43b7_002Da906_002Dfd336dd39a2d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test_Success_Login" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.Tests.LoginTest.Test_Success_Login&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.LilHelper.PathDisplay&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.Tests.ProductsTest.ProductTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.Tests.InventoryTest.ProductTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.Smokey.SmokeTest.E2E_SmokeTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.Tests.SmokeTest.E2E_SmokeTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fbcca303_002D40d9_002D4f09_002Db35b_002Dc9df92348810/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test_Success_Login #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fbcca303_002D40d9_002D4f09_002Db35b_002Dc9df92348810/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test_Success_Login #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;NUnit3x::21ED590F-B6F9-4E68-8E19-5BB66645CBAA::net6.0::PageObject.Tests.LoginTest.Test_Success_Login&lt;/TestId&gt;&#xD;
