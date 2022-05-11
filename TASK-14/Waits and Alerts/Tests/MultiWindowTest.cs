@@ -10,13 +10,13 @@ public class MultiWindowTest : BaseTest
     public void WindowsHandlingTest()
     {
         var windowsTest = new OnlinerTvWindowPage(Driver, true);
-        
+
         windowsTest.VkFooterLink.Click();
         windowsTest.FbFooterLink.Click();
         windowsTest.TwFooterLink.Click();
-        
+
         var allWindowHandles = Driver.WindowHandles;
-            
+
         Driver.SwitchTo().Window(allWindowHandles[1]);
         var twPage = new TwitterPage(Driver, false);
         Assert.Multiple(() =>
@@ -25,7 +25,7 @@ public class MultiWindowTest : BaseTest
             Assert.IsTrue(twPage.MainOnlinerTitle.Text.Contains("onlíner"));
         });
         twPage.ExploreButton.Click();
-            
+
         Driver.SwitchTo().Window(allWindowHandles[2]);
         var fbPage = new FacebookPage(Driver, false);
         Assert.Multiple(() =>
@@ -34,7 +34,7 @@ public class MultiWindowTest : BaseTest
             Assert.IsTrue(fbPage.OnlinerTitle.Text.Contains("onlíner"));
         });
         fbPage.FirstAboutTab.Click();
-            
+
         Driver.SwitchTo().Window(allWindowHandles[3]);
         var vkPage = new VkPage(Driver, false);
         Assert.Multiple(() =>

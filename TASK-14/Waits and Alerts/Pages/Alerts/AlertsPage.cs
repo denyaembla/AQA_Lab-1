@@ -16,7 +16,6 @@ public class AlertsPage : BasePage
     private static readonly By JsPromptLocator = By.XPath("//button[@onclick='jsPrompt()']");
     private static readonly By ResultFieldId = By.Id("result");
 
-
     public IWebElement JsAlert => Driver.FindElement(JsAlertLocator);
     public IWebElement JsConfirm => Driver.FindElement(JsConfirmLocator);
     public IWebElement JsPrompt => Driver.FindElement(JsPromptLocator);

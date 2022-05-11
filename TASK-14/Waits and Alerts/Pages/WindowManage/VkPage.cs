@@ -18,7 +18,7 @@ public class VkPage : BasePage
     public VkPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
-        
+
     protected override void OpenPage()
     {
     }

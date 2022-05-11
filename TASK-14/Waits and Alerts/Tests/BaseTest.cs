@@ -21,7 +21,6 @@ public class BaseTest
         _driver.Quit();
     }
 
-
     public static IWebDriver Driver
     {
         get => _driver;
