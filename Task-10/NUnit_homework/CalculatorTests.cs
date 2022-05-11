@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using NUnit.Framework;
 
 namespace NUnit_homework;
@@ -23,8 +25,16 @@ public class Tests
         _calculator = new Calculator();
     }
 
+    [OneTimeSetUp]
+    [Ignore("Testing Attributes")]
+    public void OneTimeSetupToIgnore()
+    {
+        Console.WriteLine("This line should not be logged...");
+    }
+
     [Property("Priority", 1)]
     [Category("Calculator")]
+    [Order(1)]
     [TestCase(10, 1, 11)]
     [TestCase(-5, -3, -8)]
     [TestCase(110, 90, 200)]
@@ -57,8 +67,9 @@ public class Tests
         var actual = _calculator.Multiply(first, second);
 
         Assert.AreEqual(result, actual);
+        Assert.AreNotEqual(result, first);
     }
-    
+
     [Property("Priority", 3)]
     [TestCase(6.66, 0.06, 111)]
     [TestCase(-10.05, 20.10, -0.5)]
@@ -107,15 +118,85 @@ public class Tests
         }
     }
 
-    [TearDown]
-    public void TearDown()
+    [Test]
+    public void TestForOtherAsserts()
     {
-        Console.WriteLine("Teardown...");
+        var listForAssert = new List<int>
+        {
+            1,
+            2
+        };
+
+        var number1 = 13;
+        var number2 = number1;
+
+        int? nullObject = null;
+
+        var someEmptyString = string.Empty;
+
+        Assert.Multiple(() =>
+        {
+            Assert.Contains(2, listForAssert, "List 'listForAssert' contains int value of 2.");
+            Assert.IsNull(nullObject);
+            Assert.IsEmpty(someEmptyString);
+            Assert.IsTrue(someEmptyString == string.Empty);
+            Assert.Greater(listForAssert[1], listForAssert[0]);
+        });
+        
+        Assert.AreNotSame(listForAssert[0], listForAssert[1]);
+        Assert.AreSame(listForAssert, listForAssert);
+
+        number2++;
+        Assert.AreNotEqual(number1, number2);
     }
 
+    [Test]
+    public void TestTo_Fail()
+    {
+        Assert.Fail();
+    }
+    
+    [Test]
+    public void TestTo_Pass()
+    {
+        Assert.Pass();
+    }
+    
+    [Test]
+    public void TestTo_Ignore()
+    {
+        Assert.Ignore();
+    }
+    
+    [Test]
+    public void TestTo_AssertInconclusive()
+    {
+        Assert.Inconclusive();
+    }
+
+    [Test]
+    public void TestTo_AssertThat()
+    {
+        void Hello() => Console.WriteLine("Hey");
+
+        TestDelegate mes = Hello;
+
+        var ex = Assert.Throws<Exception>(() => throw new Exception("message"));
+
+        Assert.That(ex.Message, Is.EqualTo("message"));
+        Assert.DoesNotThrow(mes);
+    }
+    
+    
     [OneTimeTearDown]
     public void OneTimeTearDown()
     {
         Console.WriteLine("OneTimeTearDown...");
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        Console.WriteLine("Teardown...");
     }
 }
