@@ -17,29 +17,38 @@ public class SecondLaminateTest
         _driver = new ChromeDriver();
     }
 
+    protected void ClearWebField(IWebElement element)
+    {
+        while (!element.GetAttribute("value").Equals(""))
+        {
+            element.SendKeys(Keys.Backspace);
+            element.SendKeys(Keys.Delete);
+        }
+    }
+
     [Test]
-    public void HomeWorkLaminateSecondSmokeTest()
+    public void SecondLaminate_SmokeTest()
     {
         _driver.Navigate().GoToUrl("https://masterskayapola.ru/kalkulyator/laminata.html");
         Thread.Sleep(5000);
         var roomLength = _driver.FindElement(By.Name("calc_roomwidth"));
-        roomLength.SendKeys(Keys.Control + "A" + Keys.Delete);
+        ClearWebField(roomLength);
         roomLength.SendKeys("12");
 
         var roomWidth = _driver.FindElement(By.Name("calc_roomheight"));
-        roomWidth.SendKeys(Keys.Control + "A" + Keys.Delete);
+        ClearWebField(roomWidth);
         roomWidth.SendKeys("9");
 
         var laminateLength = _driver.FindElement(By.Name("calc_lamwidth"));
-        laminateLength.Clear();
+        ClearWebField(laminateLength);
         laminateLength.SendKeys("1000");
 
         var laminateWidth = _driver.FindElement(By.Name("calc_lamheight"));
-        laminateWidth.Clear();
+        ClearWebField(laminateWidth);
         laminateWidth.SendKeys("200");
 
         var inPackage = _driver.FindElement(By.Name("calc_inpack"));
-        inPackage.Clear();
+        ClearWebField(inPackage);
         inPackage.SendKeys("10");
 
         var directionTemp = _driver.FindElement(By.Name("calc_direct"));
@@ -47,14 +56,14 @@ public class SecondLaminateTest
         direction.SelectByValue("toh");
 
         var shifting = _driver.FindElement(By.Name("calc_bias"));
-        shifting.Clear();
+        ClearWebField(shifting);
         shifting.SendKeys("250");
 
         var indent = _driver.FindElement(By.Name("calc_walldist"));
-        indent.Clear();
+        ClearWebField(indent);
         indent.SendKeys("10");
-
-        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+        
+        Thread.Sleep(1500);
 
         var calculateButton = _driver.FindElement(By.ClassName("btn"));
         calculateButton.Click();
@@ -64,8 +73,8 @@ public class SecondLaminateTest
 
         Assert.Multiple(() =>
         {
-            Assert.AreEqual("103.84", resultArea.Text);
-            Assert.AreEqual("250000", resultCost.Text);
+            Assert.AreEqual("107.58", resultArea.Text);
+            Assert.AreEqual("55000", resultCost.Text);
         });
     }
 

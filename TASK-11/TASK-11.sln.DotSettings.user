@@ -8,5 +8,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::03FFEB81-90D0-4E86-8F77-EBB1C59492CE::net6.0::SeleniumBasics.Tests.WarmFloorSmokeTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::03FFEB81-90D0-4E86-8F77-EBB1C59492CE::net6.0::SeleniumBasics.SecondLaminateTest.HomeWorkLaminateSecondSmokeTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::03FFEB81-90D0-4E86-8F77-EBB1C59492CE::net6.0::SeleniumBasics.SecondLaminateTest.SecondLaminate_SmokeTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
